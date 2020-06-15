@@ -25,7 +25,7 @@ app.use(session({
     secret: 'secret key',
     saveUninitialized: false,
     cookie: {
-        maxAge: 24 * 60 * 60 * 1000
+        maxAge: -1
     }
 }));
 
@@ -45,9 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // console.log(process.env.NODE_ENV);
 if(process.env.NODE_ENV == 'development') {
     app.use(morgan('development'));
-} else{
+}else if (process.env.NODE_ENV == 'production'){
     app.use(morgan('production'));
     // console.log('prodution');
+}else {
+    app.use(morgan('default'));
 }
 
 
