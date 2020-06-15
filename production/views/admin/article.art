@@ -20,6 +20,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>种类</th>
                         <th>标题</th>
                         <th>发布时间</th>
                         <th>作者</th>
@@ -31,6 +32,7 @@
                     {{each articles && articles.records}}
                     <tr>
                         <td>{{@$value._id}}</td>
+                        <td>{{@$value.sorts}}</td>
                         <td>{{$value.title}}</td>
                         <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd')}}</td>
                         <td>{{$value.author && $value.author.username}}</td>

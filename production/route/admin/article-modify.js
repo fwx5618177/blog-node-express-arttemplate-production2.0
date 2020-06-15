@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
      // 2.解析表单
     form.parse(req, async (err, fields, files) => {
     // res.send(files);
-        const { title, author, publishDate, content } = fields;
+        const { title, author, publishDate, content, sorts } = fields;
         const cover = files.cover;
 
         if( !content || !publishDate ) {
@@ -30,7 +30,8 @@ module.exports = async (req, res, next) => {
             title: title,
             author: author,
             publishDate: publishDate,
-            content: content
+            content: content,
+            sorts: sorts
         });
 
         // res.send(articles);

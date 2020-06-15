@@ -32,7 +32,7 @@
                 
                 <div class="form-group">
                     <label>分类</label>
-                    <input onchange='getSelectData(this.id, "sorts-list")' name="sorts" type="text" class="form-control" placeholder="输入分类" list="sorts-list" id="sorts">
+                    <input onchange='getSelectData(this.id, "sorts-list")' name="sorts" type="text" class="form-control" placeholder="输入分类" list="sorts-list" id="sorts" value="{{article && article.sorts}}">
                     <datalist id="sorts-list"></datalist>
                 </div>
                 
