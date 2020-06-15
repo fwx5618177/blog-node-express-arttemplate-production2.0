@@ -25,7 +25,7 @@ admin.post('/user-edit', require('./admin/user-edit-fn'));
 admin.post('/user-modify', require('./admin/user-modify'));
 
 // 删除用户功能路由
-admin.get('/delete', require('./admin/user-delete'));
+admin.get('/user-delete', require('./admin/user-delete'));
 
 // 文章列表页面路由
 admin.get('/article', require('./admin/article'));
@@ -37,6 +37,8 @@ admin.get('/article-edit', require('./admin/article-edit'));
 admin.post('/article-add', require('./admin/article-add'));
 
 admin.post('/article-modify', require('./admin/article-modify'));
+admin.get('/article-delete', require('./admin/article-delete'));
 
+admin.post('/ajax', require('./admin/ajax'));
 
 module.exports = admin;

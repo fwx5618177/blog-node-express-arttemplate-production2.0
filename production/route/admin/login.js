@@ -39,11 +39,11 @@ const login = async (req, res) => {
             return res.status(400).render('admin/error', {msg: '邮箱地址或者密码错误'});
         }
 
-    } 
+    }else {
     
     // 没有查询到用户
     return res.status(400).render('admin/error', {msg: '邮箱地址或者密码错误'});
-
+    }
 }
 
 module.exports = login;

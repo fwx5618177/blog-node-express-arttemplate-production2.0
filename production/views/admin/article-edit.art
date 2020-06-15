@@ -18,7 +18,8 @@
             <form class="form-container" action="{{link}}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>标题</label>
-                    <input name="title" type="text" class="form-control" placeholder="请输入文章标题" value="{{article && article.title}}">
+                    <input onchange='getSelectData(this.id, "title-list")' name="title" type="text" class="form-control" placeholder="请输入文章标题" value="{{article && article.title}}" list="title-list" id="title">
+                    <datalist id="title-list"></datalist>
                 </div>
                 <div class="form-group">
                     <label>作者</label>
@@ -27,6 +28,12 @@
                 <div class="form-group">
                     <label>发布时间</label>
                     <input name="publishDate" type="date" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label>分类</label>
+                    <input onchange='getSelectData(this.id, "sorts-list")' name="sorts" type="text" class="form-control" placeholder="输入分类" list="sorts-list" id="sorts">
+                    <datalist id="sorts-list"></datalist>
                 </div>
                 
                 <div class="form-group">
@@ -84,5 +91,76 @@
                 preview.src = reader.result;
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        function getSelectData (id, listid) {
+            var xmlhttp;
+            let sendData = document.getElementById(id).value;
+            let url = "/admin/ajax";
+            if( window.XMLHttpRequest ){
+                //IE7+
+                xmlhttp = new XMLHttpRequest();
+            }else {
+                //IE5,IE6
+                xmlhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
+            }
+
+
+            //发送数据；
+            xmlhttp.open( "POST", url, true );
+            // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            let da = JSON.stringify({
+                head: id,
+                data: sendData
+            });
+            // console.log('da',da);
+            // console.log(JSON.parse(da).head);
+            xmlhttp.send(da);
+	
+            //发送后，返回数据；
+            xmlhttp.onreadystatechange = function() {
+                if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ){
+                    
+                    let resdata = JSON.parse(xmlhttp.responseText);
+                    // console.log(JSON.parse(resdata));
+                    // console.log(resdata);
+                    // console.log('json[1]', resdata[0]);
+                    // console.log('json', resdata[1].title);
+                    // // console.log('json1', JSON.parse(resdata[1]).title)
+                    // console.log('datatest', JSON.parse(resdata)[1])
+			        
+                    // resdata.forEach((item) => {
+                    //     let op = document.createElement('option');
+                    //     if (listid === 'title-list') op.setAttribute('value', item.title);
+                    //     op.setAttribute('value', item.sorts);
+                    //     document.getElementById(listid).appendChild(op);
+                    // });
+                    let count = document.getElementById(listid).childElementCount;
+                    console.log(count);
+                    if( count != 0){
+                        let idNode = document.getElementById(listid);
+                        let first = idNode.firstElementChild;
+                        while(first) {                       
+                            first.remove();
+                            first = idNode.firstElementChild;
+                        }
+
+                    }
+
+                    for(let i = 0; i < resdata.length; i++) {
+                        let op = document.createElement('option');
+                        op.setAttribute('class', 'listClass');
+                        if (listid === 'title-list') op.setAttribute('value', resdata[i]);
+                        op.setAttribute('value', resdata[i]);
+                        document.getElementById(listid).appendChild(op);
+                    }
+			
+		        }
+	        }
+	
+            }
     </script>
 {{/block}}

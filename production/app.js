@@ -25,7 +25,8 @@ app.use(session({
     secret: 'secret key',
     saveUninitialized: false,
     cookie: {
-        maxAge: -1
+        maxAge: 10 * 60 * 1000
+        // secure: true
     }
 }));
 
@@ -66,12 +67,10 @@ app.use('/', other);
 app.use('/home', home);
 app.use('/admin', admin);
 
-app.use((err, req, res, next) => {
-
-    
+app.use((err, req, res, next) => { 
+    // res.send('error');
+    if(!err) return;
     const result = JSON.parse(err);
-    
-
     let params = [];
     for (let attr in result) {
         if(attr != 'path') {

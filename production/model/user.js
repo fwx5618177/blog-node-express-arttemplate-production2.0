@@ -41,31 +41,19 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // 添加实例
-User.create({
-    username: 'fwx',
-    email: 'fwx@qq.com',
-    password: '123',
-    role: 'admin',
-    state: 0
-}).then(() => {
-    console.log('用户创建成功')
-}).catch(() => {
-    console.log('用户创建失败')
-})
+// async function createUser() {
+//     const salt = await bcrypt.genSalt(10);
+//     const pass = await bcrypt.hash('123', salt);
+//     const user = await User.create({
+//         username: 'fwx',
+//         email: 'fwx@qq.com',
+//         password: pass,
+//         role: 'admin',
+//         state: 0
+//     });
+// }
 
-async function createUser() {
-    const salt = await bcrypt.genSalt(10);
-    const pass = await bcrypt.hash('123', salt);
-    const user = await User.create({
-        username: 'fwx',
-        email: 'fwx@qq.com',
-        password: pass,
-        role: 'admin',
-        state: 0
-    });
-}
-
-createUser();
+// createUser();
 
 // 验证用户信息
 const validateUser = user => {
