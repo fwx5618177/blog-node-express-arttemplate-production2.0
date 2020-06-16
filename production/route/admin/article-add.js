@@ -2,6 +2,7 @@
 const formidable = require('formidable');
 const path = require('path');
 const { Article } = require('../../model/article');
+const fs = require('fs');
 
 module.exports =  (req, res, next) => {
     //  res.send('ok');
@@ -16,8 +17,19 @@ module.exports =  (req, res, next) => {
     form.parse(req, async (err, fields, files) => {
 
         // res.send(files);
-
+        // return res.send(files.cover.path.split('public')[1]);
         if(!fields.title || !fields.author || !fields.sorts) {
+            let coverFile = files.cover.path.split('public')[1];
+            let filedDir = path.join(__dirname, '../../public');
+            let location = `${filedDir}${coverFile}`;
+            // return res.send(location);
+                fs.unlink(`${location}`,(err) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.log('delete ok');
+                  }
+                });
             return next(JSON.stringify({path: '/admin/article-edit', message: '标题和分类未填写'}))
         }
         

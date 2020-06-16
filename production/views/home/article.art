@@ -33,23 +33,49 @@
 						</div>
 					</form>
 				{{else}}
-					<div><h2>请先登录，再对文章进行评论</h2></div>
+					<h4>评论</h4>
+					
+					<form class="comment-form" action="/home/commentNoUser" method="post">
+						<textarea class="comment" name="content"></textarea>
+						<p class="comment-email">Email:</p><input type="text" name="uid" placeholder="输入邮箱地址">
+						<input type="hidden" name="aid" value="{{@article._id}}">
+						<input type="hidden" name="judge" value="1">
+						<div class="items">
+							<input type="submit" value="提交">
+						</div>
+					</form>
+					
 				{{/if}}
 					<div class="comment-list">
-					
-					{{each comments}}
-						<div class="mb10">
-							<div class="article-info">
-								<span class="author">{{$value.uid.username}}11</span>
-								<span>{{dateFormat($value.time, 'yyyy-mm-dd')}}</span>
-								<span>{{$value.uid.email}}</span>
+					{{if comments || commentnousers}}
+						{{each comments}}
+							<div class="mb10">
+								<div class="article-info">
+									<span class="author">{{$value.uid.username}}11</span>
+									<span>{{dateFormat($value.time, 'yyyy-mm-dd')}}</span>
+									<span>{{$value.uid.email}}</span>
+								</div>
+								<div class="comment-content">
+									{{$value.content}}
+								</div>
 							</div>
-							<div class="comment-content">
-								{{$value.content}}
-							</div>
-						</div>
+						{{/each}}
 
-					{{/each}}
+						
+						{{each commentnousers}}
+							<div class="mb10">
+								<div class="article-info">
+									<span class="author">{{$value.uid}}</span>
+									<span>{{dateFormat($value.time, 'yyyy-mm-dd')}}</span>
+									
+								</div>
+								<div class="comment-content">
+									{{$value.content}}
+								</div>
+							</div>
+						{{/each}}
+					{{/if}}
+
 					</div>
 				</div>
 			</div>

@@ -10,5 +10,8 @@ home.get('/article', require('./home/article'));
 
 // 创建评论功能路由
 home.post('/comment', require('./home/comment'));
+home.post('/commentNoUser', require('./home/commentNoUser'));
+
+home.get('/list', require('./home/listmenu'));
 
 module.exports = home;

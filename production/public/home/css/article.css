@@ -142,4 +142,11 @@
 	margin-top: 5px;
 }
 
+.comment {
+	resize: none;
+}
+.comment-email {
+	font-size: large;
+}
+
 /* 评论结束 */
