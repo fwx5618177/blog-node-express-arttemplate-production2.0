@@ -15,13 +15,13 @@ module.exports =  (req, res, next) => {
     form.keepExtensions = true;
     // 4.解析表单
     form.parse(req, async (err, fields, files) => {
-
         // res.send(files);
         // return res.send(files.cover.path.split('public')[1]);
+        let coverFile = files.cover.path.split('public')[1];
+        let filedDir = path.join(__dirname, '../../public');
+        let location = `${filedDir}${coverFile}`;
+        let fix = files.cover.path.split('.')[1];
         if(!fields.title || !fields.author || !fields.sorts) {
-            let coverFile = files.cover.path.split('public')[1];
-            let filedDir = path.join(__dirname, '../../public');
-            let location = `${filedDir}${coverFile}`;
             // return res.send(location);
                 fs.unlink(`${location}`,(err) => {
                   if (err) {
@@ -30,17 +30,35 @@ module.exports =  (req, res, next) => {
                     console.log('delete ok');
                   }
                 });
+
+
             return next(JSON.stringify({path: '/admin/article-edit', message: '标题和分类未填写'}))
         }
-        
+        // fwxtest-
+        if(!fields.publishDate)  fields.publishDate = new Date();
+        if(!coverFile || !fix){
+          coverFile = '\\uploads\\default\\default.jpg';
+          fs.unlink(`${location}`,(err) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('delete ok');
+            }
+          });
+        }
+        // return res.send(coverFile);
         const formData = await Article.create({
             title: fields.title,
             author: fields.author,
             publishDate: fields.publishDate,
-            cover: files.cover.path.split('public')[1],
+            cover: coverFile,
             content: fields.content,
-            sorts: fields.sorts
+            sorts: fields.sorts,
+            contentImage: JSON.stringify(global.imgarr)
         })
+
+        global.imgarr = [];
+        console.log('增加后的global:', global.imgarr);
 
         // console.log(formData);
         return res.redirect('/admin/article');

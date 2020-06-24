@@ -6,6 +6,10 @@ module.exports = async (req, res) => {
 
     const { message, id } = req.query;
 
+    if(req.app.locals.userInfo.state == 1) return res.render('admin/article', {
+        message: '您的账户已经被冻结'
+    });
+
     if(id) {
         let article = await Article.findOne({_id: id});
         // res.send(article);

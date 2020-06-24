@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
 
     // 将所有用户信息从数据库中查询出来
-    let users = await User.find({}).limit(pagesize).skip(start);
+    let users = await User.find({}).limit(pagesize).skip(start).sort({"root": 1, "username": 1, "email": 1, "state": 1, "role": 1});
     
     // res.send(users);
     return res.render('admin/user', {

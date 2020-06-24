@@ -14,7 +14,10 @@ module.exports = async (req, res) => {
     let count = await Article.countDocuments();
     let total = Math.ceil(count / pagesize);
 
-    let articles = await pagination(Article).find().page(page).size(pagesize).display(total).populate('author').exec();
+    
+    let articles = await pagination(Article).find().sort({"publishDate": 1, "author": -1, "sorts": 1, "title": 1 }).page(page).size(pagesize).display(total).populate('author').exec();
+
+    
     // console.log(articles.pages);
     // res.send(articles);
     return res.render('admin/article.art', {

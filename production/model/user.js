@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
     },
     // admin 超级管理员
     // normal 普通用户
+    // root 根用户
     role: {
         type: String,
         required: true
@@ -34,6 +35,14 @@ const userSchema = new mongoose.Schema({
     state: {
         type: Number,
         default: 0
+    },
+
+    // 管理员身份再判定
+    // 0 root 用户
+    // 1 普通admin用户
+    root: {
+        type: Number,
+        default: 1
     }
 });
 
@@ -45,11 +54,12 @@ const User = mongoose.model('User', userSchema);
 //     const salt = await bcrypt.genSalt(10);
 //     const pass = await bcrypt.hash('123', salt);
 //     const user = await User.create({
-//         username: 'fwx',
-//         email: 'fwx@qq.com',
+//         username: 'root',
+//         email: 'root@qq.com',
 //         password: pass,
-//         role: 'admin',
-//         state: 0
+//         role: 'root',
+//         state: 0,
+//         root: 0
 //     });
 // }
 
@@ -64,6 +74,7 @@ const validateUser = user => {
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required().error(new Error('密码不正确')),
         role: Joi.string().valid('normal', 'admin').required().error(new Error('角色值设定存在问题')),
         state: Joi.number().valid(0, 1).required().error(new Error('状态值非法'))
+        // root: Joi.number().valid(0, 1).error(new Error('不是根用户，没有权限'))
     };
 
     // 实施验证

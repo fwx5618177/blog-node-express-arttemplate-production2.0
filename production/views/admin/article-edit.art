@@ -43,16 +43,26 @@
                        <img class="img-thumbnail" src="{{article && article.cover}}" id="preview">
                    </div>
                 </div>
+                {{if article && article.title}}
+                
                 <div class="form-group">
                     <label>内容</label>
-                {{if article}}
-                    <a>暂时无法对原文进行修改</a>
-                {{/if}}
+                    <textarea name="content" class="form-control" id="editor">{{article.content}}</textarea>
+                    
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="{{button}}">
+                </div>
+                {{else}}
+
+                <div class="form-group">
+                    <label>内容</label>
                     <textarea name="content" class="form-control" id="editor"></textarea>
                 </div>
                 <div class="buttons">
                     <input type="submit" class="btn btn-primary" value="{{button}}">
                 </div>
+                {{/if}}
             </form>
             
         </div>
@@ -61,13 +71,42 @@
 {{/block}}
 
 {{block 'script'}}
-    <script src="/admin/lib/ckeditor5/ckeditor.js"></script>
+    <script src="/admin/lib/ckeditor5/ckeditor.js">
+    </script>
+
     <script type="text/javascript">
-    
+        // let editor = CKEDITOR.replace( 'content', {
+        //     ckfinder: {
+        //         uploadUrl: '/public/uploads/content'
+        //     }
+        // });
+        // editor.getData('content');
+
+
         let editor;
 
         ClassicEditor
-                .create( document.querySelector('#editor'))
+                .create( document.querySelector('#editor'), {
+                    language: 'zh-cn',
+                    ckfinder: {
+                        uploadUrl: '/public/uploads/content'
+                    },
+                    image: {
+                        
+                        toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight', 'imageStyle:side', 'imageStyle:alignCenter'],
+
+                        styles: [
+                            'full',
+                            'alignLeft',
+                            'alignRight',
+                            'side',
+                            'alignCenter'
+                        ],
+                    },
+                    ImageResize: {
+                        resizeUnit: 'px'
+                    }
+                })
                 .then(newEditor => {
                     editor = newEditor;
                 })
@@ -76,7 +115,7 @@
                 });
 
         // 获取数据
-        // const editorData = editor.getData();
+        // const editorData = editor.getData('content');
 
 
         // 选择文件进行上传

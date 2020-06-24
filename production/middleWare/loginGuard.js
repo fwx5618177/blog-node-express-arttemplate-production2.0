@@ -3,7 +3,8 @@ const guard = (req, res, next) => {
 
         return res.redirect('/admin/login');
     } else {
-        if(req.session.role == 'normal') {
+        if(req.session.role == 'normal' && req.url != '/logout') {
+            // return res.send(req.session.username)
             return res.redirect('/home/');
         }
 

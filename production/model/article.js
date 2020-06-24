@@ -28,6 +28,9 @@ const articleSchema = new mongoose.Schema({
     sorts: {
         type: String,
         required: [true, '请填写文章标题']
+    },
+    contentImage: {
+        type: String
     }
 });
 

@@ -24,11 +24,12 @@ const login = async (req, res) => {
             req.session.username = user.username;
             // res.send(user.role);
             req.session.role = user.role;
+            // req.session.root = user.root;
             // res.send(user.role);
             req.app.locals.userInfo = user;
             // res.send(req.app.locals.userInfo);
 
-            if(user.role == 'admin') {
+            if(user.role == 'admin' || (user.root == 0 && user.role == 'root')) {
                 res.redirect('/admin/user');
             }else {
                 res.redirect('/home/');

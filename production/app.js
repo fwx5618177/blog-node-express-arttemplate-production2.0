@@ -67,6 +67,7 @@ app.use('/', other);
 app.use('/home', home);
 app.use('/admin', admin);
 
+
 app.use((err, req, res, next) => { 
     // res.send('error');
     if(!err) return;

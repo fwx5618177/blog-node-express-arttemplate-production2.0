@@ -5,11 +5,15 @@ module.exports = async (req, res) => {
     req.app.locals.currentLink = 'user';
 
     const { message, id } = req.query;
-
+    // return res.send(req.app.locals.userInfo);
+    if(req.app.locals.userInfo.state == 1) return res.render('admin/user', {
+        message: '您的账户已经被冻结'
+    });
+    
     // 如果当前传递了id参数
     if(id) {
         let user = await User.findOne({_id: id});
-
+        
         // 渲染用户编辑页面(修改)
         return res.render('admin/user-edit', {
             message: message,
@@ -18,6 +22,7 @@ module.exports = async (req, res) => {
             button: '修改'
         });
     }else {
+        
         return res.render('admin/user-edit', {
             message: message,
             link: '/admin/user-edit',

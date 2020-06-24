@@ -28,18 +28,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                {{if articles}}
+                {{if articles && userInfo.state != 1}}
                     {{each articles && articles.records}}
                     <tr>
+                    {{if userInfo.root == 0 && userInfo.role == 'root'}}
                         <td>{{@$value._id}}</td>
+                    {{else}}
+                        <td>您没有权限操作</td>
+                    {{/if}}
+                        
                         <td>{{@$value.sorts}}</td>
                         <td>{{$value.title}}</td>
                         <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd')}}</td>
-                        <td>{{$value.author && $value.author.username}}</td>
+                        <td>{{@$value.author && $value.author.username}}</td>
+
+                    {{if userInfo.root == 0 && userInfo.role == 'root'}}
                         <td>
                             <a href="/admin/article-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a>
                             <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>
                         </td>
+                    {{else}}
+                        <td>您没有权限操作</td>
+                    {{/if}}
                     </tr>
                    {{/each}}
                 {{/if}}

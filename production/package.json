@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ckeditor/ckeditor5-image": "^19.0.1",
+    "@ckeditor/ckeditor5-upload": "^19.0.1",
     "art-template": "^4.13.2",
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",

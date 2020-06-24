@@ -16,7 +16,7 @@
 			<div class="content">
 				<a class="article-title" href="/home/article?id={{@$value._id}}">{{$value.title}}</a>
 				<div class="article-info">
-					<span class="author">{{$value.author.username}}</span>
+					<span class="author">{{$value.author && $value.author.username}}</span>
 					<span>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd')}}</span>
 				</div>
 				<div class="brief">
