@@ -2,6 +2,7 @@
 
 {{block 'link'}}
 	<link rel="stylesheet" href="/home/css/article.css">
+	<link rel="stylesheet" href="/home/css/content-styles.css" type="text/css">
 {{/block}}
 
 {{block 'main'}}
@@ -18,7 +19,9 @@
 					</div>
 				</div>
 				<div class="article-content">
-					{{@article.content}}
+				<div class="ck-content">
+					{{@article.content }}
+				</div>
 				</div>
 				<div class="article-comment">
 				{{if userInfo}}

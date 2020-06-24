@@ -1,4 +1,6 @@
 /* 文章框架开始 */
+
+
 .article {
 	margin-top: 15px;
 
@@ -13,6 +15,7 @@
 .article .container {
 	padding: 30px 40px 20px;
 	background: #FFF;
+	
 }
 /* 内容框架结束 */
 
@@ -30,7 +33,9 @@
 }
 
 .article-content {
+	min-height: 400px;
 	margin-bottom: 20px;
+	inline:block
 }
 
 .article-content p {
@@ -38,6 +43,10 @@
 	line-height: 26px;
 	padding: 8px 0;
 }
+
+
+
+
 
 /* 文章结束 */
 
