@@ -39,10 +39,11 @@
                         
                         <td>{{@$value.sorts}}</td>
                         <td>{{$value.title}}</td>
-                        <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd')}}</td>
+                        <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd hh:mm:ss')}}</td>
                         <td>{{@$value.author && $value.author.username}}</td>
 
                     {{if userInfo.root == 0 && userInfo.role == 'root'}}
+
                         <td>
                             <a href="/admin/article-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a>
                             <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>

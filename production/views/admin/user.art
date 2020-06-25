@@ -34,33 +34,41 @@
 
                 {{if userInfo.state != 1}}
 
-                {{if userInfo.role == 'root' && userInfo.root == 0}}
-                {{each users}}
-                    <tr>
-                        <td>{{@$value._id}}</td>
-                        <td>{{$value.username}}</td>
-                        <td>{{$value.email}}</td>
-                        <td>{{$value.role == 'root' ? '超级管理员' : $value.role == 'admin' ? '管理员' : '普通用户'}}</td>
-                        <td>{{$value.state == '0' ? '启用' : '禁用'}}</td>
-                        <td>
-                            <a href="/admin/user-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a>
-                            <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>
-                        </td>
-                {{/each}}
-                {{/if}}
+                    {{if userInfo.role == 'root' && userInfo.root == 0}}
+                        {{each users}}
+                            <tr>
+                                <td>{{@$value._id}}</td>
+                                <td>{{$value.username}}</td>
+                                <td>{{$value.email}}</td>
+                                <td>{{$value.role == 'root' ? '超级管理员' : $value.role == 'admin' ? '管理员' : '普通用户'}}</td>
+                                <td>{{$value.state == '0' ? '启用' : '禁用'}}</td>
+
+                                {{if $value.role == 'root' && $value.state == '0'}}
+                                    <td><a href="/admin/user-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a></td>
+                                {{else if $value.role == 'root' && $value.state == '1'}}
+                                    <td>root账户已经被冻结，您不能进行操作</td>
+                                {{else}}
+                                <td>
+                                    <a href="/admin/user-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a>
+                                    <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>
+                                </td>
+                                {{/if}}
+
+                        {{/each}}
+                    {{/if}}
                 
-                {{if userInfo.role == 'admin' && userInfo.root == 1}}
-                {{each users}}
-                    <tr>
-                        <td>{{userInfo.root == 1 ? '您没有权限操作': '请联系管理员更改用户组'}}</td>
-                        <td>{{$value.username}}</td>
-                        <td>{{$value.email}}</td>
-                        <td>{{$value.role == 'admin' ? '管理员' : '普通用户'}}</td>
-                        <td>{{$value.state == '0' ? '启用' : '禁用'}}</td>
-                        <td>{{userInfo.root == 1 ? '您没有权限操作': '请联系管理员更改用户组'}}</td>
-                    </tr>
-                {{/each}}
-                {{/if}}
+                    {{if userInfo.role == 'admin' }}
+                        {{each users}}
+                            <tr>
+                                <td>{{userInfo.root == 1 ? '您没有权限操作': '请联系管理员更改用户组'}}</td>
+                                <td>{{$value.username}}</td>
+                                <td>{{$value.email}}</td>
+                                <td>{{$value.role == 'root' ? '超级管理员' : $value.role == 'admin' ? '管理员' : '普通用户'}}</td>
+                                <td>{{$value.state == '0' ? '启用' : '禁用'}}</td>
+                                <td>{{userInfo.root == 1 ? '您没有权限操作': '请联系管理员更改用户组'}}</td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
 
                 {{/if}}
                 </tbody>

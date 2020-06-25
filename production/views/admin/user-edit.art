@@ -21,7 +21,7 @@
                     <label>邮箱</label>
                     <input name="email" type="email" class="form-control" placeholder="请输入邮箱地址" value="{{user && user.email}}">
                 </div>
-                {{if user && user._id &&  userInfo.role == 'root' && userInfo.root == 0}}
+                {{if user && user._id && userInfo.role == 'root' && userInfo.root == 0}}
                 <div class="form-group">
                     <label>密码</label>
                     <p>您是root用户，不需要输入密码</p>
@@ -38,12 +38,13 @@
                     <select name="role" class="form-control">
 
                         {{if userInfo.role == 'admin' && userInfo.root == 1}}                        
-                            <option value="normal" {{user && user.role == 'normal' ? 'selected' : ''}}>普通用户</option>
+                            <option value="normal" selected>普通用户</option>
                         {{/if}}
 
                         {{if userInfo.role == 'root' && userInfo.root == 0}}
-                            <option value="normal" {{user && user.role == 'normal' ? 'selected' : ''}}>普通用户</option>
-                            <option value="admin" {{user && user.role == 'admin' ? 'selected' : ''}}>管理员</option>                        
+                            <option value="admin" selected>管理员</option>
+                            <option value="normal">普通用户</option>
+                                                    
                         {{/if}}
                     </select>
                 </div>
