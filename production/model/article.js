@@ -22,12 +22,20 @@ const articleSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    QRfile: {
+        type: String,
+        default: null
+    },
     content: {
         type: String
     },
     sorts: {
         type: String,
         required: [true, '请填写文章标题']
+    },
+    price: {
+        type: String,
+        required: [true, '请填写价格']
     },
     contentImage: {
         type: String

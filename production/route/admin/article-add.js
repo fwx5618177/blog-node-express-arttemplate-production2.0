@@ -18,12 +18,29 @@ module.exports =  (req, res, next) => {
         // res.send(files);
         // return res.send(files.cover.path.split('public')[1]);
         let coverFile = files.cover.path.split('public')[1];
+        // return res.send(coverFile);
+        let QRfile = files.QRcode.path.split('public')[1]; 
+        // return res.send(QRfile);
+        // return res.send(coverFile, QRfile);
         let filedDir = path.join(__dirname, '../../public');
+
         let location = `${filedDir}${coverFile}`;
+        let QRlocation = `${filedDir}${QRfile}`;
+
         let fix = files.cover.path.split('.')[1];
+        let QRfix = files.QRcode.path.split('.')[1];
+
         if(!fields.title || !fields.author || !fields.sorts) {
             // return res.send(location);
                 fs.unlink(`${location}`,(err) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    console.log('delete ok');
+                  }
+                });
+
+                fs.unlink(`${QRlocation}`,(err) => {
                   if (err) {
                     console.log(err);
                   } else {
@@ -36,9 +53,19 @@ module.exports =  (req, res, next) => {
         }
         // fwxtest-
         if(!fields.publishDate)  fields.publishDate = new Date();
-        if(!coverFile || !fix){
+        if(!coverFile || !fix || !QRfix || !QRfile){
           coverFile = '\\uploads\\default\\default.jpg';
+          QRfile = '\\uploads\\default\\QR-default.jpg';
           fs.unlink(`${location}`,(err) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('delete ok');
+            }
+          });
+
+
+          fs.unlink(`${QRlocation}`,(err) => {
             if (err) {
               console.log(err);
             } else {
@@ -52,9 +79,11 @@ module.exports =  (req, res, next) => {
             author: fields.author,
             publishDate: fields.publishDate,
             cover: coverFile,
+            QRfile: QRfile,
             content: fields.content,
             sorts: fields.sorts,
-            contentImage: JSON.stringify(global.imgarr)
+            contentImage: JSON.stringify(global.imgarr),
+            price: fields.price
         })
 
         global.imgarr = [];

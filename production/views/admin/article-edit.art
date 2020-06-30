@@ -29,13 +29,28 @@
                     <label>发布时间</label>
                     <input name="publishDate" type="date" class="form-control">
                 </div>
-                
+
                 <div class="form-group">
                     <label>分类</label>
                     <input onchange='getSelectData(this.id, "sorts-list")' name="sorts" type="text" class="form-control" placeholder="输入分类" list="sorts-list" id="sorts" value="{{article && article.sorts}}">
                     <datalist id="sorts-list"></datalist>
                 </div>
-                
+                <hr />
+                <div class="form-group">
+                    <label>价格</label>
+                    <input onchange='getSelectData(this.id, "price-list")' name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}">
+                    <datalist id="price-list"></datalist>
+                </div>
+                <hr />
+                <div class="form-group">
+                   <label for="exampleInputFile">条形码</label>
+                   <input name="QRcode" type="file" id="QRfile">
+                   <div class="thumbnail-waper">
+                       <img class="img-thumbnail" src="{{article && article.QRfile}}" id="QRview">
+                   </div>
+                </div>
+
+                <hr />
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
                    <input name="cover" type="file" id="file">
@@ -118,7 +133,7 @@
         // const editorData = editor.getData('content');
 
 
-        // 选择文件进行上传
+        // 选择封面文件进行上传
         var file = document.querySelector('#file');
         var preview = document.querySelector('#preview');
         file.onchange = function () {
@@ -128,6 +143,19 @@
             reader.onload = function () {
                 // console.log(reader.result);
                 preview.src = reader.result;
+            }
+        }
+
+
+        // 选择QR二维码进行上传
+        var QRfile = document.querySelector('#QRfile');
+        var QRview = document.querySelector('#QRview');
+        QRfile.onchange = function () {
+            var QRreader = new FileReader();
+            QRreader.readAsDataURL(this.files[0]);
+            QRreader.onload = function () {
+                // console.log(reader.result);
+                QRview.src = QRreader.result;
             }
         }
     </script>

@@ -12,10 +12,12 @@ module.exports = async (req, res) => {
     // \uploads\default\default.jpg
     // return res.send(article.cover);
     const cover = article.cover;
+    const QRfile = article.QRfile;
     const uploadDir = path.join(__dirname, '../../public');
     // D:\code data\node\production-blog\production\public
     // return res.send(uploadDir);
     let coverfix = cover.split('uploads')[1];
+    let QRfilefix = QRfile.split('uploads')[1];
     // \default\default.jpg
     // return res.send(coverfix);
     if(cover && coverfix != '\\default\\default.jpg'){
@@ -26,7 +28,17 @@ module.exports = async (req, res) => {
           console.log('delete ok');
         }
       });
-    } 
+    }
+    if(QRfile && QRfilefix != '\\default\\default.jpg'){
+      fs.unlink(`${uploadDir}${QRfile}`,(err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('delete ok');
+        }
+      });
+    }
+
 
     
     let contentimg = JSON.parse(article.contentImage);
