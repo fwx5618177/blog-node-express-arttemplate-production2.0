@@ -159,7 +159,15 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById('QRview').style.width = "20%";
+            document.getElementById('QRview').style.height = "20%";
 
+            document.getElementById('preview').style.width = "50%";
+            document.getElementById('preview').style.height = "30%";
+        }
+    </script>
     <script type="text/javascript">
         function getSelectData (id, listid) {
             var xmlhttp;
