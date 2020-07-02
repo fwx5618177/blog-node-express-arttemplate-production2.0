@@ -1,44 +1,264 @@
 {{extend './common/layout.art'}}
 
-{{block 'link'}}
-	<link rel="stylesheet" href="/home/css/index.css">
-{{/block}}
-
 {{block 'main'}}
-	{{include './common/header.art'}}
-	<!-- 文章列表开始 -->
-	<ul class="list w1100">
-		{{each result.records}}
-		<li class="{{$index%2 == 0 ? 'fl' : 'fr'}}">
-			<a href="/home/article?id={{@$value._id}}" class="thumbnail">
-				<img src="{{$value.cover}}">
-			</a>
-			<div class="content">
-				<a class="article-title" href="/home/article?id={{@$value._id}}">{{$value.title}}</a>
-				<div class="article-info">
-					<span class="author">{{$value.author && $value.author.username}}</span>
-					<span>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd')}}</span>
-				</div>
-				<div class="brief">
-					{{@$value.content.replace(/<[^>]+>/g, '').substr(0, 80) + '...'}}
-				</div>
-			</div>
-		</li>
-		{{/each}}
-	</ul>
-	<!-- 文章列表结束 -->
+    <div class="page-loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
-	<!-- 分页开始 -->
-	<div class="page w1100">
-		{{if result && result.page > 1}}
-		<a href="/home/?page={{result.page -1}}">上一页</a>
-		{{/if}}
-		{{each result && result.display}}
-		<a href="/home/?page={{$value}}" class="{{$value == result.page ? 'active' : ''}}">{{$value}}</a>
-		{{/each}}
-		{{if result && result.page < result.pages}}
-		<a href="/home/?page={{result.page -0 + 1}}">下一页</a>
-		{{/if}}
-	</div>
-	<!-- 分页结束 -->
+    <div class="wrapper">
+
+    {{include './common/header.art'}}
+
+
+    <div class="page-loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+        <div class="header">
+        
+        </div>
+
+        <!-- ========================  Header content ======================== -->
+
+        <section class="header-content">
+
+            <h2 class="d-none">Slider element</h2>
+
+            <div class="container-fluid">
+
+                <div class="owl-slider owl-carousel owl-theme" data-autoplay="true">
+
+
+                    <!--Slide item-->
+
+                    <div class="item d-flex align-items-center" style="background-image:url(assets/images/slide-1.jpg)">
+                        <div class="container">
+                            <div class="caption">
+                                <div class="animated" data-start="fadeInUp">
+                                    <div class="promo pt-3">
+                                        <div class="title title-sm p-0">美酒</div>
+                                    </div>
+                                </div>
+                                <div class="animated" data-start="fadeInUp">
+                                    <div class="pt-3">
+                                        <a href="#" target="_blank" class="btn btn-outline-warning">查看详情</a>
+                                        <a href="#" target="_blank" class="btn btn-outline-light">获取二维码</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Slide item-->
+
+                </div> <!--/owl-slider-->
+            </div>
+        </section>
+
+
+        <!-- ========================  Popular products  ======================== -->
+
+        <section class="products">
+
+            <!--Header-->
+
+            <header>
+                <div class="container">
+                    <h2 class="title">最受欢迎的产品</h2>
+                    <div class="text">
+                        <p>
+                            选择你想要的酒 <a href="products-grid.html" class="btn btn-main">查看全部</a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <!--Content-->
+
+            <div class="container">
+
+                <div class="row">
+
+                    <!--Product item-->
+
+                    <div class="col-6 col-lg-4">
+                        <article>
+                            <div class="info">
+                                <span class="add-favorite">
+                                    <a href="javascript:void(0);" data-title="Add to favorites" data-title-added="Added to favorites list">
+                                        <i class="icon icon-heart"></i>
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="#productid1" class="mfp-open" data-title="Quick wiew">
+                                        <i class="icon icon-eye"></i>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="btn btn-add">
+                                <i class="icon icon-cart"></i>
+                            </div>
+                            <div class="figure-grid">
+                                <div class="image">
+                                    <a href="product.html">
+                                        <img src="assets/images/product-10.jpg" alt="" />
+                                    </a>
+                                </div>
+                                <div class="text">
+                                    <h2 class="title h4">
+                                        <a href="product.html">Anna</a>
+                                    </h2>
+                                    <sub>$ 159,-</sub>
+                                    <sup>$ 139,-</sup>
+                                    <span class="description clearfix">
+                                        Gubergren amet dolor ea diam takimata consetetur facilisis blandit et aliquyam
+                                        lorem ea duo labore diam sit et consetetur nulla
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!--Product item-->
+
+                   
+
+                
+
+                </div> <!--/row-->
+
+            </div>
+
+        </section>
+
+        <!-- ========================  Product popup ======================== -->
+
+        <div class="popup-main mfp-hide" id="productid1">
+
+            <!--Product popup-->
+
+            <div class="product">
+
+                <!--Popup-title -->
+
+                <div class="popup-title">
+                    <div class="h3 title">
+                        名字
+                        <small>蓝色经典</small>
+                    </div>
+                </div>
+
+                <!--Product gallery-->
+
+                <div class="owl-product-gallery owl-theme owl-carousel">
+                    <img src="assets/images/item-1.jpg" alt="" width="640" />
+                    <img src="assets/images/item-2.jpg" alt="" width="640" />
+                </div>
+
+                <!--Popup info-->
+
+                <div class="popup-content">
+                    <div class="product-info-wrapper">
+                        <div class="row">
+
+                            <!--Left side-->
+
+                            <div class="col-sm-6">
+                                <div class="info-box">
+                                    <strong>品牌名字</strong>
+                                    <span>蓝色经典</span>
+                                </div>
+                                <div class="info-box">
+                                    <strong>种类</strong>
+                                    <span>白酒</span>
+                                </div>
+                                <div class="info-box">
+                                    <strong>库存</strong>
+                                    <span><i class="fa fa-check-square-o"></i>在仓</span>
+                                </div>
+                            </div>
+
+                            <!--Right side-->
+
+                            <div class="col-sm-6">
+ 
+                                <div class="info-box">
+                                    <strong>选择牌子</strong>
+                                    <div class="product-colors clearfix">
+                                        <span class="color-btn color-btn-biege">经典</span>
+                                        <span class="color-btn color-btn-biege checked">典藏</span>
+                                        <span class="color-btn color-btn-biege">尊享</span>
+                                        <span class="color-btn color-btn-biege">华贵</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!--/row-->
+                    </div> <!--/product-info-wrapper-->
+                </div> <!--/popup-content-->
+
+                <div class="popup-table">
+                    <div class="popup-cell">
+                        <div class="price">
+                            <span class="h3">$ 1999,00</span>
+                        </div>
+                    </div>
+                    <div class="popup-cell">
+                        <div class="popup-buttons">
+                            <a href="product.html"><span class="icon icon-eye"></span> <span class="hidden-xs">查看详情</span></a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!--/product-->
+        </div>
+
+ 
+
+
+
+        <!-- ========================  Instagram ======================== -->
+
+        <section class="instagram">
+
+            <!--Header-->
+
+            <header>
+                <h2 class="h6 title">
+                    <i class="fa fa-instagram fa-3x"></i> <br>
+                    #日中物流
+                </h2>
+            </header>
+
+            <!--Gallery-->
+
+            <div class="container">
+
+                <div class="gallery clearfix">
+                    <a class="item" href="#">
+                        <img src="assets/images/product-1.jpg" alt="Alternate Text">
+                    </a>
+
+                </div> <!--/gallery-->
+
+            </div>
+
+        </section>
+
+
+
+
+
+    </div> <!--/wrapper-->
+
+    {{include './common/footer.art'}}
 {{/block}}
+
