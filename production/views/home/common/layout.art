@@ -31,6 +31,7 @@
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700&amp;subset=latin-ext" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,7 +48,7 @@
 
 
     <!--Scripts -->
-
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/include.js"></script>
     <script src="js/ion.rangeSlider.js"></script>

@@ -138,120 +138,13 @@
 
         </section>
 
-        <!-- ========================  Product popup ======================== -->
-
-        <div class="popup-main mfp-hide" id="productid1">
-
-            <!--Product popup-->
-
-            <div class="product">
-
-                <!--Popup-title -->
-
-                <div class="popup-title">
-                    <div class="h3 title">
-                        名字
-                        <small>蓝色经典</small>
-                    </div>
-                </div>
-
-                <!--Product gallery-->
-
-                <div class="owl-product-gallery owl-theme owl-carousel">
-                    <img src="assets/images/item-1.jpg" alt="" width="640" />
-                    <img src="assets/images/item-2.jpg" alt="" width="640" />
-                </div>
-
-                <!--Popup info-->
-
-                <div class="popup-content">
-                    <div class="product-info-wrapper">
-                        <div class="row">
-
-                            <!--Left side-->
-
-                            <div class="col-sm-6">
-                                <div class="info-box">
-                                    <strong>品牌名字</strong>
-                                    <span>蓝色经典</span>
-                                </div>
-                                <div class="info-box">
-                                    <strong>种类</strong>
-                                    <span>白酒</span>
-                                </div>
-                                <div class="info-box">
-                                    <strong>库存</strong>
-                                    <span><i class="fa fa-check-square-o"></i>在仓</span>
-                                </div>
-                            </div>
-
-                            <!--Right side-->
-
-                            <div class="col-sm-6">
- 
-                                <div class="info-box">
-                                    <strong>选择牌子</strong>
-                                    <div class="product-colors clearfix">
-                                        <span class="color-btn color-btn-biege">经典</span>
-                                        <span class="color-btn color-btn-biege checked">典藏</span>
-                                        <span class="color-btn color-btn-biege">尊享</span>
-                                        <span class="color-btn color-btn-biege">华贵</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!--/row-->
-                    </div> <!--/product-info-wrapper-->
-                </div> <!--/popup-content-->
-
-                <div class="popup-table">
-                    <div class="popup-cell">
-                        <div class="price">
-                            <span class="h3">$ 1999,00</span>
-                        </div>
-                    </div>
-                    <div class="popup-cell">
-                        <div class="popup-buttons">
-                            <a href="product.html"><span class="icon icon-eye"></span> <span class="hidden-xs">查看详情</span></a>
-                            
-                        </div>
-                    </div>
-                </div>
-
-            </div> <!--/product-->
-        </div>
+  {{include './common/product_popup.art'}}
 
  
 
 
 
-        <!-- ========================  Instagram ======================== -->
-
-        <section class="instagram">
-
-            <!--Header-->
-
-            <header>
-                <h2 class="h6 title">
-                    <i class="fa fa-instagram fa-3x"></i> <br>
-                    #日中物流
-                </h2>
-            </header>
-
-            <!--Gallery-->
-
-            <div class="container">
-
-                <div class="gallery clearfix">
-                    <a class="item" href="#">
-                        <img src="assets/images/product-1.jpg" alt="Alternate Text">
-                    </a>
-
-                </div> <!--/gallery-->
-
-            </div>
-
-        </section>
+ {{include './common/insgram.art'}}
 
 
 

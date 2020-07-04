@@ -1,0 +1,44 @@
+            <!--Header-->
+
+            <header>
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                    <h2 class="title">In Virtual Reality, How Much <br />Body Do You Need?</h2>
+                </div>
+            </header>
+
+
+            <!--Blog navigation-->
+
+            <div class="blog-navigation">
+
+                <!--Nav prev-->
+
+                <a class="nav-link prev" href="#">
+                    <figure>
+                        <div class="image">
+                            <img src="assets/images/product-2.jpg" alt="Alternate Text">
+                        </div>
+                        <figcaption>
+                            <div class="blog-title h6">打开上一个文章</div>
+                        </figcaption>
+                    </figure>
+                </a>
+
+                <!--Nav next-->
+
+                <a class="nav-link next" href="#">
+                    <figure>
+                        <div class="image">
+                            <img src="assets/images/product-3.jpg" alt="Alternate Text">
+                        </div>
+                        <figcaption>
+                            <div class="blog-title h6">下一篇文章</div>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>

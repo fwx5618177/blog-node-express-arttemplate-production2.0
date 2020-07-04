@@ -1,0 +1,30 @@
+                                <!--Title-->
+
+                                <div class="blog-post-title">
+
+                                    <h1 class="h1 blog-title">
+                                        Divano guides easily brighten <br />a dark room
+                                    </h1>
+
+                                    <h2 class="blog-subtitle h5">
+                                        It might be as little as a pair of hands and feet, researchers in Japan found after recording subjects who wore an Oculus Rift headset.
+                                    </h2>
+
+                                    <!--Info-->
+
+                                    <div class="blog-info blog-info-top">
+                                        <div class="entry">
+                                            <i class="fa fa-user"></i>
+                                            <span>John Doe</span>
+                                        </div>
+                                        <div class="entry">
+                                            <i class="fa fa-calendar"></i>
+                                            <span>03.03.2017</span>
+                                        </div>
+                                        <div class="entry">
+                                            <i class="fa fa-comments"></i>
+                                            <span>4 comments</span>
+                                        </div>
+                                    </div>
+
+                                </div>

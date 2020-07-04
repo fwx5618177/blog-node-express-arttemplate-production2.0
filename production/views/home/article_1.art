@@ -1,6 +1,5 @@
 {{extend './common/layout.art'}}
 
-
 {{block 'main'}}
     <div class="page-loader">
         <div class="spinner-border" role="status">
@@ -12,73 +11,35 @@
 
         {{include './common/header.art'}}
 
-
-
         <!-- ========================  Blog article ======================== -->
 
         <section class="blog pt-0">
 
+        {{include './common/article_navigation.art'}}
 
-            {{include './common/article_navigation.art'}}
-
-            <!--Blog content-->
+            <!-- ========================  Blog post ======================== -->
 
             <div class="container">
 
                 <div class="row">
 
-                    <div class="col-lg-9">
+                    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 
                         <!--Blog post-->
 
-                        <div class="blog-post">
+                        <div class="blog-post pt-3 pt-md-4">
 
+                            <!--Main image-->
+
+                            <div class="blog-image-main">
+                                <img src="assets/images/product-2.jpg" alt="" />
+                            </div>
 
                             <!--Blog content-->
 
-                            <div class="blog-post-content pt-0">
+                            <div class="blog-post-content">
 
-                                <!--Title-->
-
-                                <div class="blog-post-title">
-
-                                    <!--<h1 class="h1 blog-title">
-                                        In Virtual Reality, How Much <br />Body Do You Need?
-                                    </h1>-->
-
-                                    <h2 class="blog-subtitle h5">
-                                        It might be as little as a pair of hands and feet, researchers in Japan found after recording subjects who wore an Oculus Rift headset.
-                                    </h2>
-
-                                    <hr />
-
-                                    <!--Info-->
-
-                                    <div class="blog-info">
-                                        <div class="entry">
-                                            <i class="fa fa-user"></i>
-                                            <span>John Doe</span>
-                                        </div>
-                                        <div class="entry">
-                                            <i class="fa fa-calendar"></i>
-                                            <span>03.03.2017</span>
-                                        </div>
-                                        <div class="entry">
-                                            <i class="fa fa-comments"></i>
-                                            <span>4 comments</span>
-                                        </div>
-                                    </div>
-
-                                    <hr />
-
-                                </div>
-
-                                <!--Main image-->
-
-                                <div class="blog-image-main">
-                                    <img src="assets/images/product-5.jpg" alt="" />
-                                </div>
-
+                                {{include './common/article_context_title.art'}}
 
                                 <!--Blog text-->
 
@@ -88,24 +49,7 @@
                                     <p>
                                         When Michiteru Kitazaki, a professor of engineering at Toyohashi University of Technology in Japan, recently posed this question in an email, he evoked an idea from Japanese culture known as tamashii, or the soul without a body.
                                     </p>
-                                    <h4>What furniture styles are the easiest to add to your space?</h4>
-                                    <p>When you bring new furniture into your home, you don’t have to stay with the same style as your existing decor. That said, there are styles that are easier to incorporate. Look for furniture that has simple and clean lines, like contemporary and mid-century modern pieces. Adding these styles can also give your space a trendy update without a big price tag. </p>
-                                    <p>Transitional is a comfortable style that draws from traditional and contemporary lines. This popular style works well for updating a traditional home without going in an entirely different decorating direction.</p>
-                                    <p>If your room already has a strong style story, simple additions won’t detract from what you already have in there. If your room is neutral or decorated in simple furnishings, then look for dynamic new pieces that give your space that pulled-together look. </p>
                                     <p><img src="assets/images/product-4.jpg" alt="This is an alternative image description. It will generate auto caption." /></p>
-                                    <h4>How to use color to style your new and old furniture together</h4>
-                                    <p>Color is the element that can tie your existing furniture with your newly-purchased pieces. Using color as the unifying feature in your space is a simple way to make your new style look effortless. Here’s how to make the most out of color in your room</p>
-                                    <ul>
-                                        <li>
-                                            Use Your Existing Color Palette: If you love your color palette now, then shop for new furniture and decor that works with everything you already have — simple!
-                                        </li>
-                                        <li>
-                                            Add One or Two New Accent Colors: Have fun with color by adding new decor to your color scheme.
-                                        </li>
-                                        <li>
-                                            Use Accessories: Colorful accessories can serve as a bridge between all of your furniture. Add throw pillows, artwork and decorative items with colors from your existing and new furniture.
-                                        </li>
-                                    </ul>
                                     <p>
                                         Will it soon be possible, he wondered, to simulate the feeling of a spirit not attached to any particular physical form using virtual or augmented reality?
                                     </p>
@@ -131,24 +75,26 @@
                                     </p>
                                 </div>
 
-                                {{include './common/article_context_footer.art'}}
+
 
                             </div> <!--/blog-post-content-->
 
                         </div><!--blog-post-->
 
-                        {{include './common/comment.art'}}
+                    {{include './common/comment.art'}}
 
 
                     </div><!--col-sm-8-->
-                {{include './common/article_menu.art'}}
 
                 </div> <!--/row-->
 
             </div><!--/container-->
 
         </section>
-        {{include './common/insgram.art'}}
+
+
+   {{include './common/insgram.art'}}
+
 
         {{include './common/footer.art'}}
 
