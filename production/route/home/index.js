@@ -1,13 +1,14 @@
 const { Article } = require('../../model/article');
 const pagination = require('mongoose-sex-page');
+const path = require('path');
 
 module.exports = async (req, res) => {
     // return res.send('欢迎来到博客展示页面')
-    // let page = req.query.page || 1;
+    let page = req.query.page || 1;
 
-    // let pagesize = 10;
-    // let count = await Article.countDocuments();
-    // let total = Math.ceil(count / pagesize);
+    let pagesize = 10;
+    let count = await Article.countDocuments();
+    let total = Math.ceil(count / pagesize);
 
     // 文章总和
     // let results = await pagination(Article).find().page(page).size(pagesize).display(total).populate('author').exec();
@@ -27,13 +28,19 @@ module.exports = async (req, res) => {
     // return res.send(JSON.stringify(result));
     // return;
 
-    let slips = await Article.find({"slip": {$ne: 'none'}});
+    // let slips = await Article.find({"slip": {$ne: 'none'}});
+    let slips = [];
+    sortsArr.forEach((item) => {
+        slips.push( item.cover.split(path.sep).join('/'));
+    })
 
+return res.send(slips);
     
     try {
         return res.render('home/default.art', {
             // sorts: sorts,
-            // result: result
+            // result: result,
+            slips: slips
 
         });
     }catch(ex) {

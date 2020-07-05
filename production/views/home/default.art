@@ -36,9 +36,9 @@
 
 
                     <!--Slide item-->
-                {{each result.records}}
-                    {{if result.records.slip && result.records.slip !== 'none'}}
-                        <div class="item d-flex align-items-center" style="background-image:url(../{{$value.cover}})">
+                {{each slips}}
+                    {{if slips !== 'none'}}
+                        <div class="item d-flex align-items-center" style="background-image:url(../{{$slips}})">
                         <div class="container">
                             <div class="caption">
                                 <div class="animated" data-start="fadeInUp">
