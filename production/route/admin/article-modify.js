@@ -143,7 +143,9 @@ module.exports = async (req, res, next) => {
                 sorts: sorts,
                 price: price,
                 cover: article.cover,
-                QRfile: article.QRfile
+                QRfile: article.QRfile,
+                slip: fields.slip,
+                insgram: fields.insgra
             });
         
 

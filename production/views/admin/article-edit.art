@@ -41,6 +41,37 @@
                     <input onchange='getSelectData(this.id, "price-list")' name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}">
                     <datalist id="price-list"></datalist>
                 </div>
+
+                <div class="form-group">
+                    <label>是否显示在主页幻灯片</label>
+                    <select name="slip" class="form-control">
+
+                        {{if userInfo.role == 'root' && userInfo.root == 0}}
+                            <option value="no" selected>否</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                                                    
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>显示在insgram的位置</label>
+                    <select name="insgram" class="form-control">
+
+                        {{if userInfo.role == 'root' && userInfo.root == 0}}
+                            <option value="none" selected>不显示</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                                                    
+                        {{/if}}
+                    </select>
+                </div>
+
                 <hr />
                 <div class="form-group">
                    <label for="exampleInputFile">条形码</label>
@@ -161,11 +192,17 @@
     </script>
     <script type="text/javascript">
         window.onload = function () {
-            document.getElementById('QRview').style.width = "20%";
-            document.getElementById('QRview').style.height = "20%";
+            let QRfile = document.getElementById('QRview');
+            let previewfile = document.getElementById('preview');
 
-            document.getElementById('preview').style.width = "50%";
-            document.getElementById('preview').style.height = "30%";
+
+                QRfile.style.width = "20%";
+                QRfile.style.height = "20%";
+
+                previewfile.style.width = "50%";
+                previewfile.style.height = "30%";
+
+
         }
     </script>
     <script type="text/javascript">

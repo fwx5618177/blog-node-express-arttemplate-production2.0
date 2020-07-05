@@ -39,6 +39,14 @@ const articleSchema = new mongoose.Schema({
     },
     contentImage: {
         type: String
+    },
+    slip: {
+        type: String,
+        default: "none"
+    },
+    insgram: {
+        type: String,
+        default: "none"
     }
 });
 

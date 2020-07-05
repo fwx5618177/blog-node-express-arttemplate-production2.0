@@ -36,8 +36,9 @@
 
 
                     <!--Slide item-->
-
-                    <div class="item d-flex align-items-center" style="background-image:url(assets/images/slide-1.jpg)">
+                {{each result.records}}
+                    {{if result.records.slip && result.records.slip !== 'none'}}
+                        <div class="item d-flex align-items-center" style="background-image:url(../{{$value.cover}})">
                         <div class="container">
                             <div class="caption">
                                 <div class="animated" data-start="fadeInUp">
@@ -47,15 +48,15 @@
                                 </div>
                                 <div class="animated" data-start="fadeInUp">
                                     <div class="pt-3">
-                                        <a href="#" target="_blank" class="btn btn-outline-warning">查看详情</a>
-                                        <a href="#" target="_blank" class="btn btn-outline-light">获取二维码</a>
+                                        <a href="/article?id=" target="_blank" class="btn btn-outline-warning">查看详情</a>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
+                    {{/if}}
+                {{/each}}
                     <!--Slide item-->
 
                 </div> <!--/owl-slider-->
@@ -147,11 +148,8 @@
  {{include './common/insgram.art'}}
 
 
-
-
+    {{include './common/footer.art'}}
 
     </div> <!--/wrapper-->
-
-    {{include './common/footer.art'}}
 {{/block}}
 

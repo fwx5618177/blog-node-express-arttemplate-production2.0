@@ -30,7 +30,7 @@ module.exports =  (req, res, next) => {
         let fix = files.cover.path.split('.')[1];
         let QRfix = files.QRcode.path.split('.')[1];
 
-        if(!fields.title || !fields.author || !fields.sorts) {
+        if(!fields.title || !fields.author || !fields.sorts || !fields.price) {
             // return res.send(location);
                 fs.unlink(`${location}`,(err) => {
                   if (err) {
@@ -49,7 +49,7 @@ module.exports =  (req, res, next) => {
                 });
 
 
-            return next(JSON.stringify({path: '/admin/article-edit', message: '标题和分类未填写'}))
+            return next(JSON.stringify({path: '/admin/article-edit', message: '标题,分类,价格未填写'}))
         }
         // fwxtest-
         if(!fields.publishDate)  fields.publishDate = new Date();
@@ -83,7 +83,9 @@ module.exports =  (req, res, next) => {
             content: fields.content,
             sorts: fields.sorts,
             contentImage: JSON.stringify(global.imgarr),
-            price: fields.price
+            price: fields.price,
+            slip: fields.slip,
+            insgram: fields.insgram
         })
 
         global.imgarr = [];
