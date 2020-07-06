@@ -14,14 +14,16 @@
             <!--Gallery-->
 
             <div class="container">
-
-                <div class="gallery clearfix">
-                    <a class="item" href="#">
-                        <img src="assets/images/product-1.jpg" alt="Alternate Text">
+                {{each sortsArr}}
+                    {{if $value.insgram && $value.insgram != 'none'}}
+                    <div class="gallery clearfix">
+                    <a class="item" href="article?id={{@$value._id}}">
+                        <img src="..{{$value.cover}}" alt="{{$value.title}}">
                     </a>
 
-                </div> <!--/gallery-->
-                
+                    </div> <!--/gallery-->
+                    {{/if}}
+                {{/each}}
             </div>
 
 

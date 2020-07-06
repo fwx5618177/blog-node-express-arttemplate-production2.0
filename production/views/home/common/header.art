@@ -185,8 +185,9 @@
                                         <div class="box-full">
                                             <div class="box clearfix">
                                                 <ul>
-                                                    <li class="label">山崎</li>
-                                                    <li><a href="/home/search?id={{$value}}">五粮液</a></li>
+                                                    {{each sortsArr}}
+                                                    <li><a href="/home/search?id={{@$value._id}}">{{$value.sorts}}</a></li>
+                                                    {{/each}}
                                                 </ul>
                                             </div>
                                         </div>

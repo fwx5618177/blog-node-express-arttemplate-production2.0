@@ -18,29 +18,40 @@ module.exports = async (req, res) => {
     // return res.send(result.records[0].sorts)
     // 种类
     let sortsArr = await Article.find({});
-    let arr = [];
-    sortsArr.forEach((item) => {
-        arr.push(item.sorts);
-    });
+    // let arr = [];
+    // sortsArr.forEach((item) => {
+    //     arr.push(item.sorts);
+    // });
 
-    let sorts = Array.from(new Set(arr));
+    // let sorts = Array.from(new Set(arr));
     // return res.send(JSON.stringify(sorts));
     // return res.send(JSON.stringify(result));
     // return;
 
     // let slips = await Article.find({"slip": {$ne: 'none'}});
-    let slips = [];
+    // // let slips = [];
     sortsArr.forEach((item) => {
-        slips.push( item.cover.split(path.sep).join('/'));
-    })
+        if(item.slip !== null && item.slip != 'none'){
+            // slips.push(item.cover.split(path.sep).join('/'));
+            item.cover = item.cover.split(path.sep).join('/');
+            item.QRfile = item.QRfile.split(path.sep).join('/');
+            console.log(item);
+            // slips[item.title] = item.cover.split(path.sep).join('/');
+            if (item.content !== null) item.content = item.content.split(path.sep).join('/');
+        }
+    });
 
-return res.send(slips);
+
+
+
+// return res.send(sortsArr);
     
     try {
         return res.render('home/default.art', {
             // sorts: sorts,
             // result: result,
-            slips: slips
+            // slips: slips
+            sortsArr: sortsArr
 
         });
     }catch(ex) {
