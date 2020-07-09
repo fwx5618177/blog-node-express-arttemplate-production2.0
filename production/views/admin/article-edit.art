@@ -38,7 +38,9 @@
                 <hr />
                 <div class="form-group">
                     <label>价格</label>
-                    <input onchange='getSelectData(this.id, "price-list")' name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}">
+                    <input onchange='getSelectData(this.id, "price-list")' name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}" onkeypress="ss = this.selectionStart" oninput="formatter(this)" onpropertychange="formatter(this)" />
+
+                    
                     <datalist id="price-list"></datalist>
                 </div>
 
@@ -274,5 +276,17 @@
 	        }
 	
             }
+    </script>
+
+    <script>
+        function formatter(o) {
+        var arr = o.value.split('.'), nl = arr[0].length;
+        var tmp = arr[0].replace(/(\d{3}(?!,))/g, '$1,').replace(/,$/g, '')
+        var ss = o.selectionStart + tmp.length - arr[0].length;
+        console.log(ss)
+        o.value = tmp + '.' + (arr[1] || '00').substring(0,2);
+        o.selectionStart=o.selectionEnd=ss
+    }
+    
     </script>
 {{/block}}

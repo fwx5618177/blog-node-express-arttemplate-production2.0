@@ -1,4 +1,8 @@
 {{extend './common/layout.art'}}
+
+{{block 'link'}}
+
+{{/block}}
 {{block 'main'}}
     {{include './common/header.art'}}
     <!-- 主体内容 -->
@@ -7,35 +11,32 @@
         <div class="main">
         	<!-- 分类标题 -->
             <div class="title">
-                <h4>文章</h4>
+                <h4>二维码页面管理</h4>
                 {{if message}}
                 <a>{{message}}</a>
                 {{/if}}
-                <span>找到{{articles && articles.total}}篇文章</span>
-                <a href="/admin/article-edit" class="btn btn-primary new">发布新文章</a>
+                <span>找到{{articles && articles.total}}篇tag</span>
+               
                 
             </div>
             <span>默认标题排序:</span>
-            <a href="/admin/article?sequence=1" class="btn btn-primary new">幻灯片顺序</a>
-            <a href="/admin/article?sequence=2" class="btn btn-primary new">Ins位置顺序</a>
-            <a href="/admin/article?sequence=3" class="btn btn-primary new">种类顺序</a>
-            <a href="/admin/article?sequence=4" class="btn btn-primary new">时间顺序</a>
-            <a href="/admin/article?sequence=5" class="btn btn-primary new">作者顺序</a>
-            <a href="/admin/article?sequence=6" class="btn btn-primary new">标题顺序</a>
+            <a href="/admin/QRedit?sequence=1" class="btn btn-primary new">默认顺序</a>
+            <a href="/admin/QRedit?sequence=2" class="btn btn-primary new">修改时间顺序</a>
+            <a href="/admin/QRedit?sequence=3" class="btn btn-primary new">标签名顺序</a>
+            <a href="/admin/QRedit?sequence=4" class="btn btn-primary new">发布时间顺序</a>
+            <a href="/admin/QRedit?sequence=5" class="btn btn-primary new">作者顺序</a>
+            <a href="/admin/QRedit?sequence=6" class="btn btn-primary new">标题顺序</a>
             <!-- /分类标题 -->
             <!-- 内容列表 -->
             <table class="table table-striped table-bordered table-hover custom-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>幻灯片显示</th>
-                        <th>Ins位置</th>
-                        <th>种类</th>
-                        <th>标题</th>
-                        <th>发布时间</th>
+                        <th>对应文章标题</th>
+                        <th>标签类名</th>
+                        <th>文章发布时间</th>
+                        <th>tag上次修改时间</th>
                         <th>作者</th>
-                        <th>修改</th>
-                        <th>删除</th>
+                        <th>对应tag修改</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,31 +44,22 @@
                     {{each articles && articles.records}}
                     <tr>
                     {{if userInfo.root == 0 && userInfo.role == 'root'}}
-                        <td>{{@$value._id}}</td>
-                        <td>{{@$value.slip}}</td>
-                        <td>{{@$value.insgram}}</td>
+                        <td>{{$value.title}}</td>
                     {{else}}
                         <td>您没有权限操作</td>
                     {{/if}}
                         
                         <td>{{@$value.sorts}}</td>
-                        <td>{{$value.title}}</td>
                         <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd hh:mm:ss')}}</td>
-                        <td>{{@$value.author && $value.author.username}}</td>
-
-                    {{if userInfo.root == 0 && userInfo.role == 'root'}}
-
+                        <td>{{$value.lastModifyDate == null ? '暂无修改' : dateFormat($value.lastModifyDate, 'yyyy-mm-dd hh:mm:ss')}}</td>
+                        <td>{{@$value.author == null ? '该用户已被删除('+$value.lastAuthor+')' : $value.author.username}}</td>
                         <td>
-                            <a href="/admin/article-edit?id={{@$value._id}}" class="glyphicon glyphicon-book"></a>
+                            <a href="/admin/QRedit-edit?id={{@$value._id}}" class="glyphicon glyphicon-pencil"></a>
+                            <a href = "javascript:void(0)" onclick = "document.getElementById('productid1').style.display='block';">预览</a>
                             
-                        </td>
 
-                        <td>
-                            <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>
+                             
                         </td>
-                    {{else}}
-                        <td>您没有权限操作</td>
-                    {{/if}}
                     </tr>
                    {{/each}}
                 {{/if}}
@@ -118,6 +110,10 @@
             </form>
         </div>
     </div>
+
+
+
+
 {{/block}}
 
 

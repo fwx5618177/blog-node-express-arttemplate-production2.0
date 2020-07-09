@@ -41,4 +41,7 @@ admin.get('/article-delete', require('./admin/article-delete'));
 
 admin.post('/ajax', require('./admin/ajax'));
 
+// QRedit
+admin.get('/QRedit', require('./admin/QRedit'));
+
 module.exports = admin;

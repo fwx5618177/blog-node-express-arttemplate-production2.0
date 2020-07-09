@@ -90,7 +90,7 @@
 
                     <!--Product item-->
                     {{each sortsArr}}
-                                            <div class="col-6 col-lg-4">
+                    <div class="col-6 col-lg-4">
                         
                         <article>
                             <div class="info">
@@ -100,20 +100,18 @@
                                     </a>
                                     
                                 </span>
-                                {{include './common/product_popup.art'}}
+                                
                                 <span>
-                                    <a href="#productid1" class="mfp-open" data-title="Quick wiew">
+                                    <a href="#productid1" class="mfp-open" data-title="Quick wiew" id="{{$value._id}}">
                                         <i class="icon icon-eye"></i>
                                     </a>
                                 </span>
                             </div>
-                            <div class="btn btn-add">
-                                <a href="article?id={{@$value._id}}"><i class="icon icon-cart"></i></a>
-                            </div>
+
                             <div class="figure-grid">
                                 <div class="image">
                                     <a href="article?id={{@$value._id}}">
-                                        <img src="{{$value.cover}}" alt="{{$value.title}}" />
+                                        <img src="..{{$value.cover}}" alt="{{$value.title}}" />
                                     </a>
                                 </div>
                                 <div class="text">
@@ -128,13 +126,10 @@
                             </div>
                         </article>
                     </div>
-
                     {{/each}}
                     <!--Product item-->
 
-                   
 
-                
 
                 </div> <!--/row-->
 
@@ -145,7 +140,7 @@
   
 
  
-
+    {{include './common/product_popup.art'}}
 
 
  {{include './common/insgram.art'}}
