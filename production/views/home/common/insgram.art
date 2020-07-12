@@ -1,4 +1,4 @@
-       <!-- ========================  Instagram ======================== -->
+        <!-- ========================  Instagram ======================== -->
 
         <section class="instagram">
 
@@ -14,16 +14,20 @@
             <!--Gallery-->
 
             <div class="container">
-                {{each sortsArr}}
-                    {{if $value.insgram && $value.insgram != 'none'}}
-                    <div class="gallery clearfix">
-                    <a class="item" href="article?id={{@$value._id}}">
-                        <img src="..{{$value.cover}}" alt="{{$value.title}}">
-                    </a>
 
+                    <div class="gallery clearfix">
+                    {{each sortsArr}}
+                        {{if $index <= sortsArr.length}}
+                            {{if $value.insgram && $value.insgram > 0}}
+                            <a class="item" href="article?id={{@$value._id}}">
+                                <img src="..{{$value.cover}}" alt="{{$value.title}}">
+                            </a>
+                            
+                            {{/if}}
+                        {{/if}}
+                    {{/each}}
                     </div> <!--/gallery-->
-                    {{/if}}
-                {{/each}}
+
             </div>
 
 

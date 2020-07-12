@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/css/base.css">
     
-    <link rel="stylesheet" media="all" href="css/animate.css" />
-    <link rel="stylesheet" media="all" href="css/font-awesome.css" />
-    <link rel="stylesheet" media="all" href="css/ion-range-slider.css" />
-    <link rel="stylesheet" media="all" href="css/linear-icons.css" />
-    <link rel="stylesheet" media="all" href="css/magnific-popup.css" />
-    <link rel="stylesheet" media="all" href="css/owl.carousel.css" />
+
     
     {{block 'link'}}{{/block}}
 </head>

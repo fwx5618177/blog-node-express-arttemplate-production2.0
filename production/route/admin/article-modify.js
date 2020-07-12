@@ -1,9 +1,11 @@
 const { Article } = require('../../model/article');
+const { User } = require('../../model/user.js');
 // 引入第三方模块formidable
 const formidable = require('formidable');
 const { date } = require('joi');
 const path = require('path');
 const fs = require('fs');
+const { userInfo } = require('os');
 
 module.exports = async (req, res, next) => {
     const id = req.query.id;
@@ -16,7 +18,7 @@ module.exports = async (req, res, next) => {
     form.parse(req, async (err, fields, files) => {
     // res.send(files);
         const { title, author, content, sorts, price } = fields;
-        let publishDate = fields.publishDate;
+        let lastModifyDate = fields.publishDate;
         const cover = files.cover.path.split('public')[1];
         const QRfile = files.QRcode.path.split('public')[1];
 
@@ -28,7 +30,9 @@ module.exports = async (req, res, next) => {
             
         }
         // console.log(id)
-        if( !publishDate )  publishDate = new Date();
+      
+        
+         
         // return res.send(publishDate);
 
         let article = await Article.findOne({_id: id});
@@ -48,7 +52,8 @@ module.exports = async (req, res, next) => {
         let QRfix = files.QRcode.path.split('.')[1];
         let coverlocation = `${filedDir}${cover}`;
         let QRfilelocation = `${filedDir}${QRfile}`;
- 
+        
+        
 
             if(articlecover !== cover){
                 if(articlecover !== coverDefault){
@@ -61,6 +66,8 @@ module.exports = async (req, res, next) => {
                               console.log('delete ok');
                             }
                           });
+
+                         
                     }else{
                         fs.unlink(`${location}`,(err) => {
                             if (err) {
@@ -104,6 +111,8 @@ module.exports = async (req, res, next) => {
                               console.log('delete ok');
                             }
                           });
+
+                         
                     }else{
                         fs.unlink(`${QRlocation}`,(err) => {
                             if (err) {
@@ -134,18 +143,33 @@ module.exports = async (req, res, next) => {
 
 
  
-
+            
+            lastModifyDate = new Date();
+            // {"settings":
+            // {"x-powered-by":true,"etag":"weak","env":"development","query parser":"extended","subdomain offset":2,"trust proxy":false,"views":"D:\\code data\\node\\production-blog\\production\\views","jsonp callback name":"callback","view engine":"art"},
+            // "userInfo":
+              // {"state":0,
+              // "root":0,
+              // "_id":"5ef1a9f47a275c8298842f54",
+              // "username":"root",
+              // "email":"root@qq.com",
+              // "password":"$2a$10$ttUtF9DZ.4u4XUU/2HHVyeemcQ0WVrmXXow4kZn5EKiaG3ruyS2p.",
+              // "role":"root","__v":0},
+              // "currentLink":"article"}
+              let lastAuthorId = req.app.locals.userInfo._id;
+              let lastAuthorUsername = await User.findOne({_id: lastAuthorId});
+            // return res.send(lastAuthorUsername.username+fields.insgram+fields.slip);
             await Article.updateOne({_id: id}, {
                 title: title,
-                author: author,
-                publishDate: publishDate,
+                lastAuthor: lastAuthorUsername.username,
+                lastModifyDate: lastModifyDate,
                 content: content,
                 sorts: sorts,
                 price: price,
                 cover: article.cover,
                 QRfile: article.QRfile,
                 slip: fields.slip,
-                insgram: fields.insgra
+                insgram: fields.insgram
             });
         
 

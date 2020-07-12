@@ -22,6 +22,7 @@ home.get('/product', require('./home/product-grid'));
 home.get('/product-grid', require('./home/product-grid'));
 home.get('/product-list', require('./home/product-list'));
 home.post('/search', require('./home/search'));
-
+home.get('/search', require('./home/search-sorts'));
+home.post('/ajax', require('./home/ajax'));
 
 module.exports = home;

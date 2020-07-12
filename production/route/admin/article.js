@@ -26,10 +26,10 @@ module.exports = async (req, res) => {
             break;
         case 1:
             // return res.send(sequence+typeof sequence);
-            articles = await pagination(Article).find().sort({"slip": 1}).page(page).size(pagesize).display(total).populate('author').exec();
+            articles = await pagination(Article).find().sort({"slip": -1}).page(page).size(pagesize).display(total).populate('author').exec();
             break;
         case 2:
-            articles = await pagination(Article).find().sort({"insgram": 1}).page(page).size(pagesize).display(total).populate('author').exec();
+            articles = await pagination(Article).find().sort({"insgram": -1}).page(page).size(pagesize).display(total).populate('author').exec();
             break;
         case 3:
             articles = await pagination(Article).find().sort({"sorts": 1}).page(page).size(pagesize).display(total).populate('author').exec();

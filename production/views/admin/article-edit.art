@@ -38,23 +38,21 @@
                 <hr />
                 <div class="form-group">
                     <label>价格</label>
-                    <input onchange='getSelectData(this.id, "price-list")' name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}" onkeypress="ss = this.selectionStart" oninput="formatter(this)" onpropertychange="formatter(this)" />
+                    <input 
+                    onchange='getSelectData(this.id, "price-list")' 
+                    name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}" onkeypress="ss = this.selectionStart" oninput="formatter(this)" onpropertychange="formatter(this)" />
 
-                    
                     <datalist id="price-list"></datalist>
                 </div>
 
                 <div class="form-group">
                     <label>是否显示在主页幻灯片</label>
                     <select name="slip" class="form-control">
-
+                        <option value="-1" selected>否</option>
                         {{if userInfo.role == 'root' && userInfo.root == 0}}
-                            <option value="no" selected>否</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                                                    
+                            {{each arrSlip}}
+                            <option value="{{$value}}">{{$value}}</option>
+                            {{/each}}                        
                         {{/if}}
                     </select>
                 </div>
@@ -62,13 +60,12 @@
                 <div class="form-group">
                     <label>显示在insgram的位置</label>
                     <select name="insgram" class="form-control">
-
+                            <option value="-1" selected>不显示</option>
                         {{if userInfo.role == 'root' && userInfo.root == 0}}
-                            <option value="none" selected>不显示</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+
+                            {{each arrInsgram}}
+                            <option value="{{$value}}">{{$value}}</option>
+                            {{/each}}    
                                                     
                         {{/if}}
                     </select>
@@ -79,7 +76,12 @@
                    <label for="exampleInputFile">条形码</label>
                    <input name="QRcode" type="file" id="QRfile">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="{{article && article.QRfile}}" id="QRview">
+                   {{if article && article.QRfile}}
+                       <img class="img-thumbnail" src="{{article && article.QRfile}}" id="QRview" >
+
+                    {{else}}
+                        <img class="img-thumbnail" id="QRview" width="3px">
+                    {{/if}}
                    </div>
                 </div>
 
@@ -88,7 +90,11 @@
                    <label for="exampleInputFile">文章封面</label>
                    <input name="cover" type="file" id="file">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="{{article && article.cover}}" id="preview">
+                   {{if article && article.cover}}
+                       <img class="img-thumbnail" src="{{article && article.cover}}" id="preview" >
+                    {{else}}
+                        <img class="img-thumbnail" id="preview" >
+                    {{/if}}
                    </div>
                 </div>
                 {{if article && article.title}}
@@ -112,6 +118,14 @@
                 </div>
                 {{/if}}
             </form>
+
+            
+                <div class="form-group">
+                    <label>首页效果查看</label>
+                    <div>
+                    <iframe src="/home" width="400px" height="400px"></iframe>
+                    </div>
+                </div>
             
         </div>
     </div>

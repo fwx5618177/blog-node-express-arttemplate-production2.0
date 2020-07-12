@@ -3,6 +3,7 @@ const formidable = require('formidable');
 const path = require('path');
 const { Article } = require('../../model/article');
 const fs = require('fs');
+const { User } = require('../../model/user');
 
 module.exports =  (req, res, next) => {
     //  res.send('ok');
@@ -73,10 +74,13 @@ module.exports =  (req, res, next) => {
             }
           });
         }
-        // return res.send(coverFile);
+        // return res.send(fields.author.username);
+        const authorId = await User.findOne({_id: fields.author});
         const formData = await Article.create({
             title: fields.title,
             author: fields.author,
+            createAuthor: authorId.username,
+            lastAuthor: authorId.username,
             publishDate: fields.publishDate,
             cover: coverFile,
             QRfile: QRfile,

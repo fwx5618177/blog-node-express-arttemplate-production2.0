@@ -33,6 +33,7 @@
                         <th>种类</th>
                         <th>标题</th>
                         <th>发布时间</th>
+                        <th>最近修改时间</th>
                         <th>作者</th>
                         <th>修改</th>
                         <th>删除</th>
@@ -44,16 +45,17 @@
                     <tr>
                     {{if userInfo.root == 0 && userInfo.role == 'root'}}
                         <td>{{@$value._id}}</td>
-                        <td>{{@$value.slip}}</td>
-                        <td>{{@$value.insgram}}</td>
+                        <td>{{@$value.slip == -1 ? '否' : '位置:'+$value.slip}}</td>
+                        <td>{{@$value.insgram == '-1' ? '否' : '位置:'+ $value.insgram}}</td>
                     {{else}}
                         <td>您没有权限操作</td>
                     {{/if}}
                         
                         <td>{{@$value.sorts}}</td>
                         <td>{{$value.title}}</td>
-                        <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd hh:mm:ss')}}</td>
-                        <td>{{@$value.author && $value.author.username}}</td>
+                        <td>{{$value.publishDate && dateFormat($value.publishDate, 'yyyy-mm-dd hh:mm:ss')+'('}}{{$value.createAuthor == null ? '无'+')' : $value.createAuthor+')'}}</td>
+                        <td>{{$value.lastModifyDate == null ? '暂无('+$value.lastAuthor+')': dateFormat($value.lastModifyDate, 'yyyy-mm-dd hh:mm:ss')+'('+$value.lastAuthor+')' }}</td>
+                        <td>{{@$value.author == null ? '用户已删除('+$value.createAuthor+')': $value.author.username}}</td>
 
                     {{if userInfo.root == 0 && userInfo.role == 'root'}}
 

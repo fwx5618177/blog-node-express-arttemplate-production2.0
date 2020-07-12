@@ -43,5 +43,7 @@ admin.post('/ajax', require('./admin/ajax'));
 
 // QRedit
 admin.get('/QRedit', require('./admin/QRedit'));
+admin.get('/QRedit-edit', require('./admin/QRedit-edit'));
+admin.post('/QRedit-edit', require('./admin/QRedit-edit-modify'));
 
 module.exports = admin;

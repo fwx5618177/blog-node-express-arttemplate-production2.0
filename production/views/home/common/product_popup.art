@@ -1,6 +1,6 @@
         <!-- ========================  Product popup ======================== -->
 
-        <div class="popup-main mfp-hide" id="productid1">
+        <div class="popup-main mfp-hide " id="id-{{$index}}">
 
             <!--Product popup-->
 

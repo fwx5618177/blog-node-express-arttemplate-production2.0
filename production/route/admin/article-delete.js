@@ -29,7 +29,9 @@ module.exports = async (req, res) => {
         }
       });
     }
-    if(QRfile && QRfilefix != '\\default\\default.jpg'){
+    if(QRfile && QRfilefix != '\\default\\QR-default.jpg'){
+      // console.log(QRfile)
+      // return res.send(QRfile)
       fs.unlink(`${uploadDir}${QRfile}`,(err) => {
         if (err) {
           console.log(err);

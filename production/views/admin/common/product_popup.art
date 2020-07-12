@@ -18,8 +18,8 @@
                 <!--Product gallery-->
 
                 <div class="owl-product-gallery owl-theme owl-carousel">
-                    <img src="assets/images/item-1.jpg" alt="" width="640" />
-                    <img src="assets/images/item-2.jpg" alt="" width="640" />
+                    <img src="" alt="" width="640" />
+                    <img src="" alt="" width="640" />
                 </div>
 
                 <!--Popup info-->

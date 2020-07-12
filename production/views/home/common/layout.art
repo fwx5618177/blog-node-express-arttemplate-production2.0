@@ -58,6 +58,44 @@
     <script src="js/jquery.easypiechart.js"></script>
     <script src="js/bigtext.js"></script>
     <script src="js/main.js"></script>
+        <script>
+    var count = 0;
+    
+    function getSelect (name, id) {
+            var xmlhttp;
+            if(count == 0){
+                count += 1;
+            }else{
+                count -= 1;
+            }
+
+            
+            let url = "/home/ajax";
+            if( window.XMLHttpRequest ){
+                //IE7+
+                xmlhttp = new XMLHttpRequest();
+            }else {
+                //IE5,IE6
+                xmlhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
+            }
+
+            //发送数据；
+            xmlhttp.open( "POST", url, true );
+            // xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            
+            xmlhttp.setRequestHeader("Content-type","application/json");
+            let dataSet = JSON.stringify({
+                name: name,
+                id: id,
+                data: count
+            });
+
+            console.log(dataSet);
+            xmlhttp.send(dataSet);
+	
+	
+            }
+    </script>
 
     {{block 'script'}}{{/block}}
 </body>

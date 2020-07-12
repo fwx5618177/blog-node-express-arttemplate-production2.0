@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     // const results = JSON.parse(result)
     // return res.send(result.records[0].sorts)
     // 种类
-    let sortsArr = await Article.find({});
+
     // let arr = [];
     // sortsArr.forEach((item) => {
     //     arr.push(item.sorts);
@@ -30,14 +30,13 @@ module.exports = async (req, res) => {
 
     // let slips = await Article.find({"slip": {$ne: 'none'}});
     // // let slips = [];
+    let sortsArr = await Article.find({});
     sortsArr.forEach((item) => {
-        if(item.slip !== null && item.slip != 'none'){
+        if( item.slip > 0){
             // slips.push(item.cover.split(path.sep).join('/'));
             item.cover = item.cover.split(path.sep).join('/');
             item.QRfile = item.QRfile.split(path.sep).join('/');
             console.log(item);
-            // slips[item.title] = item.cover.split(path.sep).join('/');
-            if (item.content !== null) item.content = item.content.split(path.sep).join('/');
         }
     });
 

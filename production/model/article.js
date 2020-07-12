@@ -15,6 +15,9 @@ const articleSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, '请传递作者']
     },
+    createAuthor: {
+        type: String
+    },
     lastAuthor: {
         type: String,
     },
@@ -48,12 +51,16 @@ const articleSchema = new mongoose.Schema({
         type: String
     },
     slip: {
-        type: String,
-        default: "none"
+        type: Number,
+        default: -1
     },
     insgram: {
-        type: String,
-        default: "none"
+        type: Number,
+        default: -1
+    },
+    favoriteNum: {
+        type: Number,
+        default: 0
     }
 });
 
