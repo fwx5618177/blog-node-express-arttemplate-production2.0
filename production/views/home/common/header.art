@@ -201,9 +201,9 @@
                 </div>
 
                 <!-- ==========  Search wrapper ========== -->
-            <form action="/home/search" method="post" id="searchItem">
+            <form action="search" method="post" id="searchItem">
                 <div class="search-wrapper">
-                    <input class="form-control" placeholder="查询" />
+                    <input class="form-control" name="searchItem" placeholder="查询" />
                     <button class="btn btn-outline-dark btn-sm">现在开始查询</button>
                 </div>
             </form>
