@@ -12,7 +12,8 @@
         {{include './common/header.art'}}
 
         <!-- ========================  Blog article ======================== -->
-
+        
+            
         <section class="blog pt-0">
 
         {{include './common/article_navigation.art'}}
@@ -64,6 +65,7 @@
             </div><!--/container-->
 
         </section>
+        
 
 
 

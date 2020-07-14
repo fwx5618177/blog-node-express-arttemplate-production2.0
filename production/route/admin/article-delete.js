@@ -42,22 +42,28 @@ module.exports = async (req, res) => {
     }
 
 
-    
-    let contentimg = JSON.parse(article.contentImage);
+    if(article.contentImage) {
+      let contentimg = JSON.parse(article.contentImage);
 
-    contentimg.forEach((item) => {
-      fs.unlink(`${uploadDir}\\uploads\\content${item}`,(err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('delete ok');
-        }
-      });
-    })
+      contentimg.forEach((item) => {
+        fs.unlink(`${uploadDir}\\uploads\\content${item}`,(err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('delete ok');
+          }
+        });
+      })
+    }
+
+    
+
+
 
     // return res.send(contentFile);
 
-    await Article.findOneAndDelete({_id: deleId});
+    let result = await Article.findOneAndDelete({_id: deleId});
+    console.log(result)
 
     return res.redirect('/admin/article');
 

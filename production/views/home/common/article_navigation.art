@@ -3,8 +3,8 @@
             <header>
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">主页</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{article.sorts}}</a></li>
+                        <li class="breadcrumb-item"><a href="/">主页</a></li>
+                        <li class="breadcrumb-item"><a href="search?sorts={{article.sorts}}">{{article.sorts}}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{article.title}}</li>
                     </ol>
                     <h2 class="title">{{article.title}}</h2>
@@ -17,7 +17,7 @@
             <div class="blog-navigation">
 
                 <!--Nav prev-->
-
+                {{if preArticle }}
                 <a class="nav-link prev" href="article?id={{@preArticle._id}}">
                     <figure>
                         <div class="image">
@@ -28,9 +28,9 @@
                         </figcaption>
                     </figure>
                 </a>
-
+                {{/if}}
                 <!--Nav next-->
-
+                {{if postArticle}}
                 <a class="nav-link next" href="article?id={{@postArticle._id}}">
                     <figure>
                         <div class="image">
@@ -41,4 +41,5 @@
                         </figcaption>
                     </figure>
                 </a>
+                {{/if}}
             </div>

@@ -7,7 +7,7 @@
                                     </h1>
 
                                     <h2 class="blog-subtitle h5">
-                                        {{article.content.replace(/<[^>]+>/g, '').substr(0, 25) + '...'}}
+                                        {{article.content && article.content.replace(/<[^>]+>/g, '').substr(0, 25) + '...'}}
                                     </h2>
 
                                     <!--Info-->
