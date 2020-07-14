@@ -3,11 +3,11 @@
             <header>
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Library</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        <li class="breadcrumb-item"><a href="#">主页</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{article.sorts}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{article.title}}</li>
                     </ol>
-                    <h2 class="title">In Virtual Reality, How Much <br />Body Do You Need?</h2>
+                    <h2 class="title">{{article.title}}</h2>
                 </div>
             </header>
 
@@ -18,10 +18,10 @@
 
                 <!--Nav prev-->
 
-                <a class="nav-link prev" href="#">
+                <a class="nav-link prev" href="article?id={{@preArticle._id}}">
                     <figure>
                         <div class="image">
-                            <img src="assets/images/product-2.jpg" alt="Alternate Text">
+                            <img src="{{preArticle.cover}}" alt="{{preArticle.title}}">
                         </div>
                         <figcaption>
                             <div class="blog-title h6">打开上一个文章</div>
@@ -31,10 +31,10 @@
 
                 <!--Nav next-->
 
-                <a class="nav-link next" href="#">
+                <a class="nav-link next" href="article?id={{@postArticle._id}}">
                     <figure>
                         <div class="image">
-                            <img src="assets/images/product-3.jpg" alt="Alternate Text">
+                            <img src="{{postArticle.cover}}" alt="{{postArticle.title}}">
                         </div>
                         <figcaption>
                             <div class="blog-title h6">下一篇文章</div>

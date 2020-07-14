@@ -3,11 +3,11 @@
                                 <div class="blog-post-title">
 
                                     <h1 class="h1 blog-title">
-                                        Divano guides easily brighten <br />a dark room
+                                        {{article.title}}
                                     </h1>
 
                                     <h2 class="blog-subtitle h5">
-                                        It might be as little as a pair of hands and feet, researchers in Japan found after recording subjects who wore an Oculus Rift headset.
+                                        {{article.content.replace(/<[^>]+>/g, '').substr(0, 25) + '...'}}
                                     </h2>
 
                                     <!--Info-->
@@ -15,15 +15,15 @@
                                     <div class="blog-info blog-info-top">
                                         <div class="entry">
                                             <i class="fa fa-user"></i>
-                                            <span>John Doe</span>
+                                            <span>{{article.createAuthor}}</span>
                                         </div>
                                         <div class="entry">
                                             <i class="fa fa-calendar"></i>
-                                            <span>03.03.2017</span>
+                                            <span>{{dateFormat(article.publishDate, 'yyyy-mm-dd hh:mm:ss')}}</span>
                                         </div>
                                         <div class="entry">
                                             <i class="fa fa-comments"></i>
-                                            <span>4 comments</span>
+                                            <span>{{$commentsCount}} 评论</span>
                                         </div>
                                     </div>
 

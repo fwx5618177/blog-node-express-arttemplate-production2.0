@@ -1,8 +1,8 @@
                         <div class="comments">
 
                             <div class="comment-header">
-                                <div class="h3 m-0">Recent comments</div>
-                                <span>14 reviews for Bedroom product</span>
+                                <div class="h3 m-0">最新评论</div>
+                                <span>{{$commentsCount}}条评论</span>
                             </div>
 
                             <div class="comment-wrapper">
@@ -15,7 +15,7 @@
 
                                     <div class="comment-user">
                                         <div>
-                                            <img src="assets/images/user.jpg" alt="Alternate Text" width="70" />
+                                            <img src="assets/images/user.jpg" alt="user" width="70" />
                                         </div>
                                         <div>
                                             <h5>

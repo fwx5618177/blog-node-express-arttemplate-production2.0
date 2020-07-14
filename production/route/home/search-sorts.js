@@ -48,7 +48,7 @@ module.exports = async (req, res, next) => {
             // slips.push(item.cover.split(path.sep).join('/'));
             item.cover = item.cover.split(path.sep).join('/');
             item.QRfile = item.QRfile.split(path.sep).join('/');
-            console.log(item);
+            // console.log(item);
             // slips[item.title] = item.cover.split(path.sep).join('/');
             // if (item.content !== null) item.content = item.content.split(path.sep).join('/');
         }

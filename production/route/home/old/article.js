@@ -15,13 +15,14 @@ module.exports = async (req, res, next) => {
         // 查询当前文章所对应的评论信息
         let comments = await Comment.find({aid: id}).populate('uid');
 
-        let commentnousers = await CommentNoUser.find({aid: id});
-
+        // let commentnousers = await CommentNoUser.find({aid: id});
+        let commentsCount = await Article.countDocuments();
         // return res.send(commentnousers);
             // res.send(article);
-        return res.render('home/article.art', {
+        return res.render('article.art', {
             article,
             comments,
-            commentnousers
+            commentsCount
+            
         });
 }

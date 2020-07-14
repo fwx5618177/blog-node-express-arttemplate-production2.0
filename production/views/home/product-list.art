@@ -106,7 +106,7 @@
                         <div class="row">
 
                             <!--Product item-->
-                            {{each articles.records}}
+                            {{each articles.records || articles}}
                             <div class="col-12">
                                 <article>
                                     <div class="info">

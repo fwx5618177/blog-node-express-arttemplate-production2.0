@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="animated" data-start="fadeInUp">
                                     <div class="pt-3">
-                                        <a href="/article?id={{@$value._id}}" target="_blank" class="btn btn-outline-warning">查看详情</a>
+                                        <a href="article?id={{@$value._id}}" target="_blank" class="btn btn-outline-warning">查看详情</a>
                                     </div>
                                 </div>
 

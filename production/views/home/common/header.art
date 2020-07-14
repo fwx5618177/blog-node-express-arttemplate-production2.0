@@ -204,6 +204,13 @@
             <form action="search" method="post" id="searchItem">
                 <div class="search-wrapper">
                     <input class="form-control" name="searchItem" placeholder="查询" />
+                    <select name="type" class="form-control">
+                        <option value="title">品牌名</option>
+                        <option value="sorts">种类</option>
+                        <option value="price">价格</option>
+                        <option value="date">日期</option>
+                    
+                    </select>
                     <button class="btn btn-outline-dark btn-sm">现在开始查询</button>
                 </div>
             </form>
