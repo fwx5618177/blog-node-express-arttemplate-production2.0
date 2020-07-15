@@ -22,12 +22,13 @@ require('./model/connect');
 app.use(bodyPaser.urlencoded({extended: false}));
 app.use(bodyPaser.json());
 // 配置session
+
 app.use(session({
     secret: 'secret key',
-    saveUninitialized: false,
+    resave: false,
+    saveUninitialized: true,
     cookie: {
         maxAge: 10 * 60 * 1000
-        // secure: true
     }
 }));
 

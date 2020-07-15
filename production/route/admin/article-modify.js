@@ -48,7 +48,7 @@ module.exports = async (req, res, next) => {
         // let QRDefault = '\\uploads\\default\\QR-default.jpg';
 
         let coverDefault = '/uploads/default/default.jpg';
-        let QRDefault = '/uploads//default/QR-default.jpg';
+        let QRDefault = '/uploads/default/QR-default.jpg';
         // return res.send(article.cover + coverDefault);
         // return res.send('articlecover',articlecover);
         let fix = files.cover.path.split('.')[1];
