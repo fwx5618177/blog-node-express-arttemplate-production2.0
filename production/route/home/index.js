@@ -34,8 +34,13 @@ module.exports = async (req, res) => {
     sortsArr.forEach((item) => {
         if( item.slip > 0){
             // slips.push(item.cover.split(path.sep).join('/'));
+
+            // win
             item.cover = item.cover.split(path.sep).join('/');
             item.QRfile = item.QRfile.split(path.sep).join('/');
+
+            // linux no
+
             console.log(item);
         }
     });
