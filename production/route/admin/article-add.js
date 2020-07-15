@@ -31,6 +31,15 @@ module.exports =  (req, res, next) => {
         let fix = files.cover.path.split('.')[1];
         let QRfix = files.QRcode.path.split('.')[1];
 
+        console.log(fix)
+
+// coverFile:/uploads/upload_91ec68479b798f9d210e95b7797b8ac2
+// QRfile:/uploads/upload_28f8ae9d9ece60ba6809e8012a4a4084
+// fix:0/production/public/uploads/upload_91ec68479b798f9d210e95b7797b8ac2
+// QRfix:0/production/public/uploads/upload_28f8ae9d9ece60ba6809e8012a4a4084
+
+
+
         if(!fields.title || !fields.author || !fields.sorts || !fields.price) {
             // return res.send(location);
                 fs.unlink(`${location}`,(err) => {

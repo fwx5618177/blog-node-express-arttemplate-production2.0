@@ -1,6 +1,7 @@
 // 1.引入mongoose模块
 const mongoose = require('mongoose');
 const { User } = require('./user');
+const { string } = require('joi');
 
 // 2.创建文章集合规则
 const articleSchema = new mongoose.Schema({
@@ -44,7 +45,7 @@ const articleSchema = new mongoose.Schema({
         required: [true, '请填写文章标题']
     },
     price: {
-        type: Number,
+        type: String,
         required: [true, '请填写价格']
     },
     contentImage: {
