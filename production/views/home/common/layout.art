@@ -25,7 +25,7 @@
 
     {{block 'main'}}{{/block}}
 
-</body>
+
     <!--Scripts -->
     <script src="/home/js/jquery.min.js"></script>
     <script src="/home/js/bootstrap.js"></script>
@@ -77,6 +77,6 @@
     </script>
 
     {{block 'script'}}{{/block}}
-
+</body>
 
 </html>
