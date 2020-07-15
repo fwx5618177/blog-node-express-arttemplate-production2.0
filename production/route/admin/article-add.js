@@ -65,11 +65,11 @@ module.exports =  (req, res, next) => {
         if(!fields.publishDate)  fields.publishDate = new Date();
         if(!coverFile || !fix || !QRfix || !QRfile){
           // win
-          coverFile = '\\uploads\\default\\default.jpg';
-          QRfile = '\\uploads\\default\\QR-default.jpg';
+          // coverFile = '\\uploads\\default\\default.jpg';
+          // QRfile = '\\uploads\\default\\QR-default.jpg';
           // linux
-          // coverFile = '/uploads/default/default.jpg';
-          // QRfile = '/uploads/default/QR-default.jpg';
+          coverFile = '/uploads/default/default.jpg';
+          QRfile = '/uploads/default/QR-default.jpg';
 
           fs.unlink(`${location}`,(err) => {
             if (err) {

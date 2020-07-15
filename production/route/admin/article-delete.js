@@ -20,7 +20,14 @@ module.exports = async (req, res) => {
     let QRfilefix = QRfile.split('uploads')[1];
     // \default\default.jpg
     // return res.send(coverfix);
-    if(cover && coverfix != '\\default\\default.jpg'){
+//win
+    // let coverDefault = '\\default\\default.jpg';
+    // let QRDefault = '\\default\\QR-default.jpg';
+  //linux
+    let coverDefault = '/default/default.jpg';
+    let QRDefault = '/default/QR-default.jpg';
+
+    if(cover && coverfix != coverDefault){
       fs.unlink(`${uploadDir}${cover}`,(err) => {
         if (err) {
           console.log(err);
@@ -29,7 +36,7 @@ module.exports = async (req, res) => {
         }
       });
     }
-    if(QRfile && QRfilefix != '\\default\\QR-default.jpg'){
+    if(QRfile && QRfilefix != QRDefault){
       // console.log(QRfile)
       // return res.send(QRfile)
       fs.unlink(`${uploadDir}${QRfile}`,(err) => {
@@ -40,13 +47,15 @@ module.exports = async (req, res) => {
         }
       });
     }
-
-
+//wiwn
+    // let jonstr = '\\uploads\\content';
+// linux
+    let jonstr = '/uploads/content';
     if(article.contentImage) {
       let contentimg = JSON.parse(article.contentImage);
 
       contentimg.forEach((item) => {
-        fs.unlink(`${uploadDir}\\uploads\\content${item}`,(err) => {
+        fs.unlink(`${uploadDir}${jonstr}${item}`,(err) => {
           if (err) {
             console.log(err);
           } else {
