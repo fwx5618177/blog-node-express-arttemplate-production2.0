@@ -1,18 +1,4 @@
 {{extend './common/layout.art'}}
-{{block 'link'}}
-<style>
-.error_data {
-	border:2px solid red;
-}
-	
-.success_data {
-	border:2px solid green;
-}
-
-</style>
-
-
-{{/block}}
 
 
 

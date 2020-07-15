@@ -155,7 +155,7 @@
                     <ul>
                         <!--add active class for current page-->
                         <li class="left-side"><a href="/" class="logo-icon"><img src="assets/icons/icon-accessories.svg" alt="Alternate Text" width="150" height="34"/></a></li>
-                        <li><a href="/admin" class="open-login"><i class="icon icon-user"></i></a></li>
+                        <li><a href="/admin/login" class="open-login"><i class="icon icon-user"></i></a></li>
                         <li><a href="javascript:void(0);" class="open-search"><i class="icon icon-magnifier"></i></a></li>
                         
                     </ul>

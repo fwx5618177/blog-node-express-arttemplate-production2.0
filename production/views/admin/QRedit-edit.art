@@ -1,33 +1,33 @@
 {{extend './common/layout.art'}}
 
 {{block 'link'}}
-<style>
+    <style>
 
-        .pre_img {
-            display: none; 
-            position: absolute; 
-            top: 25%; 
-            left: 72%; 
-            width: auto; 
-            height: auto; 
-            padding: 0px; 
-            border: 1px solid yellow; 
-            background-color: #ffffff;
-            z-index:2;
-            overflow: auto; 
-        }
+            .pre_img {
+                display: none; 
+                position: absolute; 
+                top: 25%; 
+                left: 72%; 
+                width: auto; 
+                height: auto; 
+                padding: 0px; 
+                border: 1px solid yellow; 
+                background-color: #ffffff;
+                z-index:2;
+                overflow: auto; 
+            }
 
-        .pre_img img {
-            max-width: 400px;  
-            max-height: auto;
-        }
+            .pre_img img {
+                max-width: 400px;  
+                max-height: auto;
+            }
 
-        .pre_img p {
-            font-size: 20px;
-            font-weight: bold;
-        }
+            .pre_img p {
+                font-size: 20px;
+                font-weight: bold;
+            }
 
-</style>
+    </style>
 {{/block}}
 
 {{block 'main'}}

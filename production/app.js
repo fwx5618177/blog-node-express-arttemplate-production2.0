@@ -25,7 +25,7 @@ app.use(bodyPaser.json());
 
 app.use(session({
     secret: 'secret key',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
         maxAge: 10 * 60 * 1000

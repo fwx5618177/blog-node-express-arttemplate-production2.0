@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = async (req, res) => {
     // return res.send('欢迎来到博客展示页面')
-    res.clearCookie('connect.sid');
+    
     let page = req.query.page || 1;
 
     let pagesize = 10;
