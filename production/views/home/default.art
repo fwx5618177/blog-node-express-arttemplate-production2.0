@@ -12,6 +12,8 @@
     {{include './common/header.art'}}
 
 
+
+
     <div class="page-loader">
         <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
@@ -30,16 +32,17 @@
 
             <h2 class="d-none">Slider element</h2>
 
+
             <div class="container-fluid">
 
                 <div class="owl-slider owl-carousel owl-theme" data-autoplay="true">
-
+                
 
                     <!--Slide item-->
 
                 {{each sortsArr}}
                     {{if $value.slip > 0 }}
-                        <div class="item d-flex align-items-center" style="background-image:url(..{{$value.cover}})">
+                        <div class="item d-flex align-items-center" style="background-image:url(..{{$value.cover}});background-repeat: no-repeat;background-size: auto;">
                         <div class="container">
                             <div class="caption">
                                 <div class="animated" data-start="fadeInUp">
@@ -115,7 +118,7 @@
                                 {{if $value.cover}}
                                 <div class="image">
                                     <a href="article?id={{@$value._id}}">
-                                        <img src="..{{$value.cover}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'"/>
+                                        <img src="..{{$value.cover}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'" style="max-height:196.3px;"/>
                                     </a>
                                 </div>
                                 {{else}}
@@ -163,7 +166,7 @@
                 <!--Product gallery-->
 
                 <div class="owl-product-gallery owl-theme owl-carousel">
-                    <img  src="{{$value.QRfile}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'" style="max-width: 640px;" />
+                    <img  src="{{$value.QRfile}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'" style="max-width: 640px;max-height:200px;" />
                 </div>
 
                 <!--Popup info-->
