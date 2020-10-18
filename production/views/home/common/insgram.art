@@ -20,7 +20,7 @@
                         {{if $index <= sortsArr.length}}
                             {{if $value.insgram && $value.insgram > 0}}
                             <a class="item" href="article?id={{@$value._id}}">
-                                <img src="..{{$value.cover}}" alt="{{$value.title}}">
+                                <img src="..{{$value.cover}}" alt="{{$value.title}}" style="max-height:124.88px;">
                             </a>
                             
                             {{/if}}
