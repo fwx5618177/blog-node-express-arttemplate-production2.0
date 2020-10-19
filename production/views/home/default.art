@@ -114,8 +114,8 @@
                             <div class="figure-grid">
                                 {{if $value.cover}}
                                 <div class="image">
-                                    <a href="article?id={{@$value._id}}">
-                                        <img src="..{{$value.cover}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'" style="max-height:196.3px;"/>
+                                    <a href="article?id={{@$value._id}}" style="text-align:center;">
+                                        <img src="..{{$value.cover}}" alt="{{$value.title}}" onerror="script:this.src='/uploads/default/icon.jpg'" style="max-height:200px;width:auto;"/>
                                     </a>
                                 </div>
                                 {{else}}
