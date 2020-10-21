@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
     let commentsCount = await Article.countDocuments();
     // return res.send(commentnousers);
         // res.send(article);
-
+	console.log(article.publishDate);
     let preArticle = await Article.findOne({"publishDate": {'$lt': article.publishDate }}).sort({"publishDate": -1}).limit(1)
 
     
