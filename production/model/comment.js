@@ -9,7 +9,8 @@ const commentSchema = new mongoose.Schema({
         ref: 'User'
     },
     time: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     content: {
         type: String

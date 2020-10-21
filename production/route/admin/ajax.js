@@ -39,6 +39,15 @@ module.exports = async (req, res) => {
             })
             
             return res.status(200).send(JSON.stringify(arr));
+        }else if(data.head === 'price') {
+            let article = await Article.find({price: reg});
+
+            let arr = [];
+            article.forEach((item) => {
+                arr.push(item.price);
+            })
+            
+            return res.status(200).send(JSON.stringify(arr));
         }
         return res.status(400).send('不在查询范围内');
 

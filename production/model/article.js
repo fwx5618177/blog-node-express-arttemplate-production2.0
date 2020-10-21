@@ -1,5 +1,7 @@
 // 1.引入mongoose模块
 const mongoose = require('mongoose');
+const { User } = require('./user');
+const { string } = require('joi');
 
 // 2.创建文章集合规则
 const articleSchema = new mongoose.Schema({
@@ -14,11 +16,24 @@ const articleSchema = new mongoose.Schema({
         ref: 'User',
         required: [true, '请传递作者']
     },
+    createAuthor: {
+        type: String
+    },
+    lastAuthor: {
+        type: String,
+    },
     publishDate: {
         type: Date,
         default: Date.now
     },
+    lastModifyDate: {
+        type: Date
+    },
     cover: {
+        type: String,
+        default: null
+    },
+    QRfile: {
         type: String,
         default: null
     },
@@ -29,8 +44,24 @@ const articleSchema = new mongoose.Schema({
         type: String,
         required: [true, '请填写文章标题']
     },
+    price: {
+        type: String,
+        required: [true, '请填写价格']
+    },
     contentImage: {
         type: String
+    },
+    slip: {
+        type: Number,
+        default: -1
+    },
+    insgram: {
+        type: Number,
+        default: -1
+    },
+    favoriteNum: {
+        type: Number,
+        default: 0
     }
 });
 

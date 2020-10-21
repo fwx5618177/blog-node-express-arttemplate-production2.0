@@ -1,5 +1,7 @@
 {{extend './common/layout.art'}}
 
+
+
 {{block 'main'}}
     {{include './common/header.art'}}
     <!-- 主体内容 -->
@@ -29,18 +31,72 @@
                     <label>发布时间</label>
                     <input name="publishDate" type="date" class="form-control">
                 </div>
-                
+
                 <div class="form-group">
                     <label>分类</label>
                     <input onchange='getSelectData(this.id, "sorts-list")' name="sorts" type="text" class="form-control" placeholder="输入分类" list="sorts-list" id="sorts" value="{{article && article.sorts}}">
                     <datalist id="sorts-list"></datalist>
                 </div>
-                
+                <hr />
+                <div class="form-group">
+                    <label>价格</label>
+                    <input 
+                    onchange='getSelectData(this.id, "price-list")' 
+                    name="price" type="text" class="form-control" placeholder="输入价格" list="price-list" id="price" value="{{article && article.price}}" onblur="number_format(this.value, 3)" />
+
+                    <datalist id="price-list"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label>是否显示在主页幻灯片</label>
+                    <select name="slip" class="form-control">
+                        <option value="-1" selected>否</option>
+                        {{if userInfo.role == 'root' && userInfo.root == 0}}
+                            {{each arrSlip}}
+                            <option value="{{$value}}">{{$value}}</option>
+                            {{/each}}                        
+                        {{/if}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>显示在insgram的位置</label>
+                    <select name="insgram" class="form-control">
+                            <option value="-1" selected>不显示</option>
+                        {{if userInfo.role == 'root' && userInfo.root == 0}}
+
+                            {{each arrInsgram}}
+                            <option value="{{$value}}">{{$value}}</option>
+                            {{/each}}    
+                                                    
+                        {{/if}}
+                    </select>
+                </div>
+
+                <hr />
+                <div class="form-group">
+                   <label for="exampleInputFile">条形码</label>
+                   <input name="QRcode" type="file" id="QRfile">
+                   <div class="thumbnail-waper">
+                   {{if article && article.QRfile}}
+                       <img class="img-thumbnail" src="{{article && article.QRfile}}" id="QRview" >
+
+                    {{else}}
+                        <img class="img-thumbnail" id="QRview" width="3px">
+                    {{/if}}
+                   </div>
+                </div>
+
+                <hr />
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
                    <input name="cover" type="file" id="file">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="{{article && article.cover}}" id="preview">
+                   {{if article && article.cover}}
+                       <img class="img-thumbnail" src="{{article && article.cover}}" id="preview" >
+                    {{else}}
+                        <img class="img-thumbnail" id="preview" >
+                    {{/if}}
                    </div>
                 </div>
                 {{if article && article.title}}
@@ -64,6 +120,14 @@
                 </div>
                 {{/if}}
             </form>
+
+            
+                <div class="form-group">
+                    <label>首页效果查看</label>
+                    <div>
+                    <iframe src="/home" width="400px" height="400px"></iframe>
+                    </div>
+                </div>
             
         </div>
     </div>
@@ -118,7 +182,7 @@
         // const editorData = editor.getData('content');
 
 
-        // 选择文件进行上传
+        // 选择封面文件进行上传
         var file = document.querySelector('#file');
         var preview = document.querySelector('#preview');
         file.onchange = function () {
@@ -130,8 +194,35 @@
                 preview.src = reader.result;
             }
         }
-    </script>
 
+
+        // 选择QR二维码进行上传
+        var QRfile = document.querySelector('#QRfile');
+        var QRview = document.querySelector('#QRview');
+        QRfile.onchange = function () {
+            var QRreader = new FileReader();
+            QRreader.readAsDataURL(this.files[0]);
+            QRreader.onload = function () {
+                // console.log(reader.result);
+                QRview.src = QRreader.result;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            let QRfile = document.getElementById('QRview');
+            let previewfile = document.getElementById('preview');
+
+
+                QRfile.style.width = "20%";
+                QRfile.style.height = "20%";
+
+                previewfile.style.width = "50%";
+                previewfile.style.height = "30%";
+
+
+        }
+    </script>
     <script type="text/javascript">
         function getSelectData (id, listid) {
             var xmlhttp;
@@ -201,5 +292,44 @@
 	        }
 	
             }
+    </script>
+
+    <script>
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+        /*
+        * 参数说明：
+        * number：要格式化的数字
+        * decimals：保留几位小数
+        * dec_point：小数点符号
+        * thousands_sep：千分位符号
+        * */
+        number = (number + '').replace(/[^0-9+-Ee.]/g, '');
+        var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function (n, prec) {
+                var k = Math.pow(10, prec);
+                return '' + Math.floor(n * k) / k;
+            };
+        s = (prec ? toFixedFix(n, prec) : '' + Math.floor(n)).split('.');
+        var re = /(-?\d+)(\d{3})/;
+        console.log(s)
+        while (re.test(s[0])) {
+            s[0] = s[0].replace(re, "$1" + sep + "$2");
+        }
+        if ((s[1] || '').length < prec) {
+            s[1] = s[1] || '';
+            s[1] += new Array(prec - s[1].length + 1).join('0');
+        }
+        
+        document.getElementById('price').value = s.join(dec);
+        return s.join(dec);
+    }
+
+
+    
     </script>
 {{/block}}

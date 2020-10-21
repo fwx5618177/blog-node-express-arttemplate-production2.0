@@ -26,7 +26,8 @@
                         <th>邮箱</th>
                         <th>角色</th>
                         <th>状态</th>
-                        <th>操作</th>
+                        <th>修改</th>
+                        <th>删除</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,11 +46,16 @@
 
                                 {{if $value.role == 'root' && $value.state == '0'}}
                                     <td><a href="/admin/user-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a></td>
+                                    <td><span>不能修改自己</span></td>
                                 {{else if $value.role == 'root' && $value.state == '1'}}
                                     <td>root账户已经被冻结，您不能进行操作</td>
                                 {{else}}
                                 <td>
                                     <a href="/admin/user-edit?id={{@$value._id}}" class="glyphicon glyphicon-edit"></a>
+                                    
+                                </td>
+
+                                <td>
                                     <i class="glyphicon glyphicon-remove delete" data-toggle="modal" data-target=".confirm-modal" data-id="{{@$value._id}}"></i>
                                 </td>
                                 {{/if}}

@@ -20,13 +20,15 @@ const app = express();
 require('./model/connect');
 // 处理post请求参数
 app.use(bodyPaser.urlencoded({extended: false}));
+app.use(bodyPaser.json());
 // 配置session
+
 app.use(session({
     secret: 'secret key',
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
         maxAge: 10 * 60 * 1000
-        // secure: true
     }
 }));
 
