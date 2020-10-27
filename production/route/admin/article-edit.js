@@ -33,7 +33,10 @@ module.exports = async (req, res) => {
     if (strSlip.length > maxNum * 2 - 1 || 
         strSlip.length < 0 ||
         strInsgram.length > maxNum * 2 - 1 ||
-        strInsgram.length < 0)  return 0;
+        strInsgram.length < 0) {
+	
+	console.log("Out of Range.");
+}else{
 
     for(i = 1; i <= maxNum; i++){
         let flagSlip = strSlip.indexOf(i);
@@ -53,7 +56,7 @@ module.exports = async (req, res) => {
     }
     // 2
     // return res.send(arrInsgram);
-
+}
     if(id) {
         let article = await Article.findOne({_id: id});
         // res.send(article);

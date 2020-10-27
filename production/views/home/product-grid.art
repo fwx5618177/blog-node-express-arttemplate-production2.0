@@ -139,8 +139,8 @@
                                     <div class="figure-grid">
                                         <span class="badge badge-warning">仍有库存</span>
                                         <div class="image">
-                                            <a href="article?id={{$value.id}}">
-                                                <img src="{{$value.cover}}" alt="{{$value.title}}" />
+                                            <a href="article?id={{$value.id}}" style="text-align:center;">
+                                                <img src="{{$value.cover}}" alt="{{$value.title}}" style="width:auto; max-height:200px;"/>
                                             </a>
                                         </div>
                                         <div class="text">

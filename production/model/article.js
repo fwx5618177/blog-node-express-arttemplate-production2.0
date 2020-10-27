@@ -7,7 +7,7 @@ const { string } = require('joi');
 const articleSchema = new mongoose.Schema({
     title: {
         type: String,
-        maxlength: 20,
+        maxlength: [100, '超出字符限制，请写入100以下的标题'],
         minlength: 1,
         required: [true, '请填写文章标题']
     },

@@ -32,8 +32,8 @@
 
                             <!--Main image-->
 
-                            <div class="blog-image-main">
-                                <img src="{{article.cover}}" alt="{{article.title}}" />
+                            <div class="blog-image-main" style="text-align:center;" >
+                                <img src="{{article.cover}}" alt="{{article.title}}" style="width:auto;"/>
                             </div>
 
                             <!--Blog content-->
