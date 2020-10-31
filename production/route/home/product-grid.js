@@ -78,7 +78,7 @@ module.exports = async (req, res, next) => {
                 id: item.id,
                 sorts: item.sorts
             });
-            console.log("sortsValue:"+sortsItem[index].sorts);
+            //console.log("sortsValue:"+sortsItem[index].sorts);
 
             //console.log("indexof test:"+"fwxtest-1,fwxtest-2,fwx4,qwq1,fwxtest4,fwx4".indexOf("fwx4"));
         }
