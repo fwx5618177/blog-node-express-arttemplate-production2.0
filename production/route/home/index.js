@@ -46,6 +46,23 @@ module.exports = async (req, res) => {
         }
     });
 
+    let sortsValue = [];
+    let sortsItem = [];
+    sortsArr.forEach((item,index) => {
+        console.log("sorts:"+item.sorts);
+        //console.log("indexof:"+sortsArr.indexOf(item.sorts));
+        if (sortsValue.indexOf(item.sorts) === -1){
+            //console.log("item.sorts:"+item.sorts);
+            sortsValue.push(item.sorts);
+            sortsItem.push({
+                id: item.id,
+                sorts: item.sorts
+            });
+            console.log("sortsValue:"+sortsItem[index].sorts);
+
+            //console.log("indexof test:"+"fwxtest-1,fwxtest-2,fwx4,qwq1,fwxtest4,fwx4".indexOf("fwx4"));
+        }
+    });
 
 
 
@@ -56,8 +73,8 @@ module.exports = async (req, res) => {
             // sorts: sorts,
             // result: result,
             // slips: slips
-            sortsArr: sortsArr
-
+            sortsArr: sortsArr,
+	sortsItem: sortsItem
         });
     }catch(ex) {
         return res.send(ex.message);

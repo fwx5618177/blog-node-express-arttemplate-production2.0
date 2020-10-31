@@ -185,7 +185,7 @@
                                         <div class="box-full">
                                             <div class="box clearfix">
                                                 <ul>
-                                                    {{each sortsArr}}
+                                                    {{each sortsItem}}
                                                     <li><a href="/home/search?sorts={{$value.sorts}}">{{$value.sorts}}</a></li>
                                                     {{/each}}
                                                 </ul>
